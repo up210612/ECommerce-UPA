@@ -1,18 +1,18 @@
 use FULL;
 
-INSERT INTO employees VALUES
-(1, 'Davolio', 'Nancy', '1968-12-08', '1992-05-01', '4491234567', true),
-(2, 'Fuller', 'Andrew', '1952-02-19', '1992-08-14', '', true),
-(3, 'Leverling', 'Janet', '1963-08-30', '1992-04-01', '', true),
-(4, 'Peacock', 'Margaret', '1958-09-19', '1993-05-03', '', true),
-(5, 'Buchanan', 'Steven', '1955-03-04', '1993-10-17', '', true),
-(6, 'Suyama', 'Michael', '1963-07-02', '1993-10-17', '', true),
-(7, 'King', 'Robert', '1960-05-29', '1994-01-02', '', true),
-(8, 'Callahan', 'Laura', '1958-01-09', '1994-03-05', '', true),
-(9, 'Dodsworth', 'Anne', '1969-07-02', '1994-11-15', '', true);
+INSERT INTO clients VALUES
+(1, 'Davolio', 'Nancy', '4491234567'),
+(2, 'Fuller', 'Andrew', ''),
+(3, 'Leverling', 'Janet', ''),
+(4, 'Peacock', 'Margaret', ''),
+(5, 'Buchanan', 'Steven', ''),
+(6, 'Suyama', 'Michael', ''),
+(7, 'King', 'Robert', ''),
+(8, 'Callahan', 'Laura', ''),
+(9, 'Dodsworth', 'Anne', '');
 
 
-INSERT INTO orders (id_order, id_employee, order_date) VALUES
+INSERT INTO orders (id_order, id_client, order_date) VALUES
 (10248, 5, '1996-07-04'),
 (10249, 6, '1996-07-05'),
 (10250, 4, '1996-07-08'),
