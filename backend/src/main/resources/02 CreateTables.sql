@@ -1,22 +1,19 @@
 -- Base de datos: full
-use FULL;
+use ECOMMERCE;
 
-CREATE TABLE employees (
-  id_employee int(10) AUTO_INCREMENT PRIMARY KEY,
+CREATE TABLE clients (
+  id_client int(10) AUTO_INCREMENT PRIMARY KEY,
   last_name varchar(20) NOT NULL,
   first_name varchar(10),
-  birth_date date,
-  hire_date datetime,
-  celular varchar(10),
-  active  boolean
+  celular varchar(10)
 );
 
 CREATE TABLE orders (
   id_order int(10) AUTO_INCREMENT PRIMARY KEY,
-  id_employee int(10),
+  id_client int(10),
   order_date date,
-  CONSTRAINT Emp_Ord FOREIGN KEY (id_employee) 
-            REFERENCES employees (id_employee)
+  CONSTRAINT Client_Ord FOREIGN KEY (id_client) 
+            REFERENCES clients (id_client)
 );
 
 CREATE TABLE products (
