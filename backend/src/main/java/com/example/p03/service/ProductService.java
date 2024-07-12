@@ -22,5 +22,14 @@ public class ProductService {
     }
 
     public Optional<Product> getProduct(Long id) {
-        return ProductRepository.findById(id);    }
+        return ProductRepository.findById(id);
+    }
+
+    public void guardar(Product product) {
+        ProductRepository.save(product);
+    }
+
+    public void eliminar(Long id){
+        ProductRepository.deleteById(id);
+    }
 }

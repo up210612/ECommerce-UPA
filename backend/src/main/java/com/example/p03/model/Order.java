@@ -15,7 +15,7 @@ public class Order {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_employee", nullable = false)
-    private Employee employee;  // transient
+    private Client employee;  // transient
     
     @Column(name = "order_date")
     @Temporal(TemporalType.DATE)
