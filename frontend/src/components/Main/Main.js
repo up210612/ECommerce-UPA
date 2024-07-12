@@ -1,10 +1,14 @@
 import React from 'react';
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
+// import Home from '../Home/Home';  Se importa el componente
 
 const Main = () => {
   return (
-    <div>
-      <h1>Main Component</h1>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {/* <Route path="/" element={<Home/>}></Route> */} /* Aqui se usa la ruta
+      </Routes>
+    </BrowserRouter>
   );
 };
 
