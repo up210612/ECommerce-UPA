@@ -1,11 +1,11 @@
-CREATE DATABASE IF NOT EXISTS FULL2;
+CREATE DATABASE IF NOT EXISTS ECOMMERCE;
 
--- drop user 'full'@'localhost';     sensible a Mayusculas
--- SET PASSWORD FOR  'full'@'localhost' = PASSWORD ('full')
+-- drop user 'e-commerce'@'localhost';     sensible a Mayusculas
+-- SET PASSWORD FOR  'e-commerce'@'localhost' = PASSWORD ('full')
 
-CREATE USER 'full2'@'localhost' IDENTIFIED BY 'full2';
+CREATE USER 'e-commerce'@'localhost' IDENTIFIED BY 'e-commerce';
 
-GRANT ALL PRIVILEGES ON FULL2.* TO 'full2'@'localhost' [identified by 'full2'];
+GRANT ALL PRIVILEGES ON ECOMMERCE.* TO 'e-commerce'@'localhost' identified by 'e-commerce';
 
 flush privileges;
 
