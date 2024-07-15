@@ -10,8 +10,8 @@ const Main = () => {
     <BrowserRouter>
       <Routes>
         {/* <Route path="/" element={<Home/>}></Route> */} /* Aqui se usa la ruta
+        <Route path="/" element={<Home/>}></Route>
         <Route path="/checkout" element={<Checkout/>}></Route>
-        <Route path="/home" element={<Home/>}></Route>
         <Route path="/product#" element={<ProductEx/>}></Route>
       </Routes>
     </BrowserRouter>
