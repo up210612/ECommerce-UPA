@@ -1,17 +1,11 @@
-import React from 'react';
-import ProductPage from '../ProductPage/ProductPage'; // Ajusta la ruta según tu estructura
-import 'bootstrap/dist/css/bootstrap.min.css';
+import './App.css';
+import Main from '../Main';
+import Home from '../Home/Home';
 
-const exampleProduct = {
-  title: 'Titulo del producto',
-  description: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-  price: '20.00',
-};
-
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <ProductPage product={exampleProduct} />
+    <div>
+      <Main/>
     </div>
   );
 }
