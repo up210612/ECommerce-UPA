@@ -7,64 +7,64 @@ export default function CheckoutInfoCliente() {
             <form>
 
                 <h3>Información Cliente</h3>
-                <div class="mb-3">
-                    <label class="form-label">Correo</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                <div className="mb-3">
+                    <label className="form-label">Correo</label>
+                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
                 </div>
                 <hr className="border-2"></hr>
                 <h3>Dirección de envío</h3>
-                <div class="row mb-3">
-                    <div class="col">
-                        <label class="form-label">Primer nombre</label>
-                        <input type="text" class="form-control"  aria-label="First name" />
+                <div className="row mb-3">
+                    <div className="col">
+                        <label className="form-label">Primer nombre</label>
+                        <input type="text" className="form-control"  aria-label="First name" />
                     </div>
-                    <div class="col">
-                        <label class="form-label">Apellidos</label>
-                        <input type="text" class="form-control" aria-label="Last name" />
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Empresa</label>
-                    <input placeholder="Opcional" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
-                </div>
-                <div class="row mb-3">
-                    <div class="col-6">
-                        <label class="form-label">Calle</label>
-                        <input type="text" class="form-control" aria-label="First name" />
-                    </div>
-                    <div class="col-3">
-                        <label class="form-label">Número</label>
-                        <input type="text" class="form-control" aria-label="First name" />
-                    </div>
-                    <div class="col-3">
-                        <label class="form-label">Apartamento</label>
-                        <input type="text" class="form-control" placeholder="(Opcional)" aria-label="Last name" />
+                    <div className="col">
+                        <label className="form-label">Apellidos</label>
+                        <input type="text" className="form-control" aria-label="Last name" />
                     </div>
                 </div>
-                <div class="row mb-3">
-                    <div class="col-5">
-                        <label class="form-label">País</label>
-                        <select  class="form-select">
+                <div className="mb-3">
+                    <label className="form-label">Empresa</label>
+                    <input placeholder="Opcional" type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                </div>
+                <div className="row mb-3">
+                    <div className="col-6">
+                        <label className="form-label">Calle</label>
+                        <input type="text" className="form-control" aria-label="First name" />
+                    </div>
+                    <div className="col-3">
+                        <label className="form-label">Número</label>
+                        <input type="text" className="form-control" aria-label="First name" />
+                    </div>
+                    <div className="col-3">
+                        <label className="form-label">Apartamento</label>
+                        <input type="text" className="form-control" placeholder="(Opcional)" aria-label="Last name" />
+                    </div>
+                </div>
+                <div className="row mb-3">
+                    <div className="col-5">
+                        <label className="form-label">País</label>
+                        <select  className="form-select">
                             <option selected>Escoger...</option>
                             <option>...</option>
                         </select>
                     </div>
-                    <div class="col-4">
-                        <label class="form-label">Estado</label>
-                        <select  class="form-select">
+                    <div className="col-4">
+                        <label className="form-label">Estado</label>
+                        <select  className="form-select">
                             <option selected>Escoger...</option>
                             <option>...</option>
                         </select>
                     </div>
-                    <div class="col-3">
-                        <label class="form-label">Código postal</label>
-                        <input type="text" class="form-control" aria-label="código postal" required/>
+                    <div className="col-3">
+                        <label className="form-label">Código postal</label>
+                        <input type="text" className="form-control" aria-label="código postal" required/>
                     </div>
                 </div>
                 <hr className="border-2"></hr>
                 <div className="d-flex justify-content-between mb-5">
                     <Link className="text-decoration-none text-secondary" to="#">{"<"} Regresar al carrito</Link>
-                    <button type="submit" class="btn btn-primary">Completar el pedido</button>
+                    <button type="submit" className="btn btn-primary">Completar el pedido</button>
                 </div>
             </form>
         </div>

@@ -28,7 +28,7 @@ export default function CheckoutSummary(){
                     <input type="text" className="form-control" aria-label="promo"></input>
                 </div>
                 <div className="col-sm-4 mb-2" type="text" aria-label="promo">
-                    <button type="button" class="btn btn-primary">Aplicar</button>
+                    <button type="button" className="btn btn-primary">Aplicar</button>
                 </div>
             </div>
 
