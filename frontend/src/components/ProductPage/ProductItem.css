@@ -1,0 +1,26 @@
+/* ProductItem.css */
+
+.product-item-container {
+    position: relative;
+  }
+  
+  .thumbnail-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  
+  .thumbnail {
+    width: 60px;
+    height: 60px;
+    margin: 0 5px;
+    cursor: pointer;
+    object-fit: cover;
+    border: 2px solid transparent;
+    transition: border 0.3s ease;
+  }
+  
+  .thumbnail.selected {
+    border: 2px solid #007bff;
+  }
+  

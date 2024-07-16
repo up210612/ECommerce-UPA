@@ -3,6 +3,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Checkout from '../Checkout/Checkout';
 import Home from '../Home/Home';
 import ProductEx from '../Product/Product';
+import ProductPage from '../ProductPage/ProductPage';
 // import Home from '../Home/Home';  Se importa el componente
 
 const Main = () => {
@@ -13,6 +14,9 @@ const Main = () => {
         <Route path="/" element={<Home/>}></Route>
         <Route path="/checkout" element={<Checkout/>}></Route>
         <Route path="/product#" element={<ProductEx/>}></Route>
+        <Route path="/productPage" element={<ProductPage/>}></Route>
+
+
       </Routes>
     </BrowserRouter>
   );
