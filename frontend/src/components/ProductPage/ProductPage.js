@@ -3,6 +3,7 @@ import ProductDetails from './ProductDetails';
 import ProductItem from './ProductItem';
 import ButtonAppBar from '../Navbar/Navbar';
 import ProductList from '../Home/HomeComponents/ProductList';
+import Footer from '../Footer/Footer';
 
 const ProductPage = ({ product }) => {
   return (
@@ -19,6 +20,9 @@ const ProductPage = ({ product }) => {
                     </div>
                     <div className='col-md-8'>
                         <ProductList/>
+                    </div>
+                    <div>
+                        <Footer/>
                     </div>
                 </div>
             </div>
