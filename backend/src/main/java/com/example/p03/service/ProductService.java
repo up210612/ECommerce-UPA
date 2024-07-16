@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.p03.model.Product;
 import com.example.p03.repository.ProductRepository;
+import com.example.p03.exception.ExcepcionRecursoNoEncontrado;
 
 import java.util.*;
 
@@ -21,8 +22,12 @@ public class ProductService {
         return ProductRepository.findAll();
     }
 
-    public Optional<Product> getProduct(Long id) {
-        return ProductRepository.findById(id);
+    public Product getProduct(Long id) throws ExcepcionRecursoNoEncontrado {
+        Optional<Product> optionalProduct = ProductRepository.findById(id);
+        if(optionalProduct.isPresent() == false){
+            throw new ExcepcionRecursoNoEncontrado("The producto was not found: " + id);
+        }
+        return optionalProduct.get();
     }
 
     public void guardar(Product product) {

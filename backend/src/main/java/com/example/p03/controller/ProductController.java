@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.p03.exception.ExcepcionRecursoNoEncontrado;
+
 
 @RestController
 @RequestMapping({"/products"})
@@ -35,8 +37,8 @@ public class ProductController {
     }
 
     @GetMapping({ "/{id}" })
-    public ResponseEntity<Optional<Product>> getProduct(@PathVariable Long id) {
-        return ResponseEntity.ok(productService.getProduct(id));
+    public Product getProduct(@PathVariable Long id) throws ExcepcionRecursoNoEncontrado{
+        return productService.getProduct(id);
     }
 
     @GetMapping("/deleteProduct/{id}") 
