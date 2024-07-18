@@ -8,16 +8,17 @@ const ProductPage = ({ product }) => {
   return (
     <div>
             <ButtonAppBar/>
-            <div className="container mt-99">
+            <div className="container mt-5">
                 <div className="row align-items-start">
                     <div className="col-md-8 ">
                         <ProductItem/>
-                        <p></p>
                     </div>
                     <div className="col-md-4 ">
                         <ProductDetails/>
                     </div>
-                    <div className='col-md-8'>
+                </div>
+                <div className = "row align-items-start">
+                    <div className='container mt-5'>
                         <ProductList/>
                     </div>
                 </div>
