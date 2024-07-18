@@ -16,8 +16,14 @@ import jakarta.validation.Valid;
 import java.util.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import com.example.p03.exception.ExcepcionRecursoNoEncontrado;
+
+
+@RestController
+@RequestMapping({"/products"})
 public class ProductController {
     private final ProductService productService;
 
@@ -31,11 +37,11 @@ public class ProductController {
     }
 
     @GetMapping({ "/{id}" })
-    public ResponseEntity<Optional<Product>> getProduct(@PathVariable Long id) {
-        return ResponseEntity.ok(productService.getProduct(id));
+    public Product getProduct(@PathVariable Long id) throws ExcepcionRecursoNoEncontrado{
+        return productService.getProduct(id);
     }
 
-    @GetMapping("/eliminarProducto/{id}") 
+    @GetMapping("/deleteProduct/{id}") 
     public ResponseEntity<String> eliminar(@PathVariable Long id) {
         if (id > 0) {
             productService.eliminar(id);
@@ -43,7 +49,7 @@ public class ProductController {
         return ResponseEntity.ok("Product deleted successfully"); 
     }
 
-    @PostMapping("/agregarProducto")
+    @PostMapping("/addProduct")
     public ResponseEntity<String> addProduct(@Valid Product product, BindingResult br) {
         if (br.hasErrors()) {
             return ResponseEntity.ok("Data received unsuccessfully");
@@ -53,7 +59,7 @@ public class ProductController {
         return ResponseEntity.ok("Data received successfully");
     }
 
-    @PostMapping("/editarProducto")
+    @PostMapping("/editProduct")
     public ResponseEntity<String> editProduct(@Valid Product product, BindingResult br) {
         if (br.hasErrors()) {
             return ResponseEntity.ok("Data received unsuccessfully");

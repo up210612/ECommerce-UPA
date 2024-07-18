@@ -5,9 +5,11 @@ import Home from '../Home/Home';
 const App = () => {
   return (
     <div>
-      <Home/>
+      <Main/>
     </div>
   );
 }
 
 export default App;
+
+
