@@ -1,8 +1,17 @@
 package com.example.p03.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import com.example.p03.model.Product;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
 
-public interface ProductRepository extends JpaRepository<Product, Long>{
-    
+import com.example.p03.model.Product;
+import java.util.*;
+
+@Repository
+public interface ProductRepository extends JpaRepository<Product, Long> {
+
+    @Query(value = "select * from products where product_name like %:name%", nativeQuery = true)
+    List<Product> searchProductsByName(@Param("name") String name);
+
 }
