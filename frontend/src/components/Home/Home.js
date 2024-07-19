@@ -1,11 +1,12 @@
 import Banner from "./HomeComponents/Banner";
 import ProductList from "./HomeComponents/ProductList";
-import ButtonAppBar from "../Navbar/Navbar";
+import Navbar from "../Navbar/Navbar";
+import Footer from "../Footer/Footer";
 
 export default function Home() {
   return (
     <div>
-        <ButtonAppBar/>
+        <Navbar/>
       <div class="container-fluid p-0">
         <div class="row no-gutters">
           <div class="col-12">
@@ -18,6 +19,7 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

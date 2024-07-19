@@ -1,23 +1,15 @@
 import React from 'react';
-import './ProductList.css'; // We'll create this CSS file
-
-const ProductItem = ({ imageSrc, altText, title, attributes, price }) => (
-  <div className="product-item">
-    <img src={imageSrc} alt={altText} className="product-image" />
-    <a href="#" className="product-title">{title}</a>
-    <p className="product-attributes">{attributes}</p>
-    <p className="product-price">{price}</p>
-  </div>
-);
+import ProductItem from './ProductItem';
+import './ProductList.css';
 
 export default function ProductList() {
   const products = [
-    { id: 1, title: "Título del producto 1", attributes: "Atributos", price: "$00.00" },
-    { id: 2, title: "Título del producto 2", attributes: "Atributos", price: "$00.00" },
-    { id: 3, title: "Título del producto 3", attributes: "Atributos", price: "$00.00" },
-    { id: 4, title: "Título del producto 4", attributes: "Atributos", price: "$00.00" },
-    { id: 5, title: "Título del producto 5", attributes: "Atributos", price: "$00.00" },
-    { id: 6, title: "Título del producto 6", attributes: "Atributos", price: "$00.00" },
+    { id: 1, title: "Título del producto 1", category: "Categoría 1", rating: "★★★★☆", attributes: "Atributos", price: "$00.00" },
+    { id: 2, title: "Título del producto 2", category: "Categoría 2", rating: "★★★☆☆", attributes: "Atributos", price: "$00.00" },
+    { id: 3, title: "Título del producto 3", category: "Categoría 3", rating: "★★★★★", attributes: "Atributos", price: "$00.00" },
+    { id: 4, title: "Título del producto 4", category: "Categoría 4", rating: "★★☆☆☆", attributes: "Atributos", price: "$00.00" },
+    { id: 5, title: "Título del producto 5", category: "Categoría 5", rating: "★★★★☆", attributes: "Atributos", price: "$00.00" },
+    { id: 6, title: "Título del producto 6", category: "Categoría 6", rating: "★★★☆☆", attributes: "Atributos", price: "$00.00" },
     // Add more products as needed
   ];
 
@@ -26,9 +18,12 @@ export default function ProductList() {
       {products.map((product) => (
         <ProductItem
           key={product.id}
+          id={product.id}
           imageSrc="https://placehold.co/150x150"
           altText={`Producto ${product.id}`}
           title={product.title}
+          category={product.category}
+          rating={product.rating}
           attributes={product.attributes}
           price={product.price}
         />

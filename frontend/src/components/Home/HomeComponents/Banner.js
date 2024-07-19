@@ -15,9 +15,6 @@ export default function Banner() {
         eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
         minim veniam, quis nostrud exercitation.
       </p>
-      <button class="bg-primary text-primary-foreground py-2 px-4 border border-black hover:bg-primary/80">
-        Buscar
-      </button>
     </section>
   
     <section class="bg-muted text-muted-foreground p-4 text-center mb-8">
@@ -26,3 +23,8 @@ export default function Banner() {
   </div>
   );
 }
+
+
+/**
+ * <CustomButton to="/productX">Producto</CustomButton>
+ */
