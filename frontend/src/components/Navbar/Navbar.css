@@ -1,104 +1,139 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #f8f9fa;
+  /* Cambia el color según tu preferencia */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  /* Borde más redondeado */
+  margin-bottom: 3rem;
+  /* Margen inferior de 3rem */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  margin-right: 15px;
+  margin-top: 20px;
+}
+
+.logo img {
+  height: 50px;
+  margin-right: 15px;
+}
+
+.logo span {
+  display: flex;
+  align-items: center;
+  /* Centra verticalmente el texto con el ícono */
+}
+
+.logo .navbar-brand {
+  font-size: 24px;
+  color: #343a40;
+  text-decoration: none;
+}
+
+.text-special {
+
+  font-size: 15px;
+  color: #343a40;
+  text-decoration: none;
+
+}
+
+.search {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  /* Permite que el contenedor crezca */
+  max-width: 600px;
+  /* Ancho máximo del contenedor */
+  margin: 0 auto;
+  /* Centra el contenedor horizontalmente */
+  border-radius: 8px 0 0 8px;
+  margin-top: 20px;
+}
+
+.search input {
+  padding: 10px;
+  /* Aumenta el tamaño del input */
+  border: 1px solid #ced4da;
+  border-radius: 8px 0 0 8px;
+  /* Borde más redondeado */
+  outline: none;
+  width: 100%;
+  /* Asegura que el input ocupe todo el ancho del contenedor */
+  font-size: 16px;
+  /* Tamaño de la fuente del input */
+}
+
+.search button {
+  background-color: transparent;
+  border: 1px solid #ced4da;
+  border-left: none;
+  border-radius: 0 8px 8px 0;
+  /* Borde más redondeado */
+  padding: 10px;
+  /* Aumenta el tamaño del botón */
+  cursor: pointer;
+}
+
+.search button img {
+  height: 24px;
+}
+
+.nav-icons {
+  display: flex;
+  align-items: center;
+}
+
+.nav-icons a {
+  position: relative;
+  margin-left: 20px;
+  text-decoration: none;
+}
+
+.nav-icons img {
+  height: 35px;
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 2px 6px;
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
     align-items: center;
-    padding: 10px 20px;
-    background-color: #f8f9fa; /* Cambia el color según tu preferencia */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 25px; /* Borde más redondeado */
-    margin-bottom: 3rem; /* Margen inferior de 3rem */
   }
-  
-  .logo {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo img {
-    height: 30px;
-    margin-right: 10px;
-  }
-  
+
   .search {
-    display: flex;
-    align-items: center;
-    flex-grow: 1; /* Permite que el contenedor crezca */
-    max-width: 600px; /* Ancho máximo del contenedor */
-    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    width: 100%;
+    margin: 10px 0;
   }
-  
-  .search input {
-    padding: 5px 10px;
-    border: 1px solid #ced4da;
-    border-radius: 8px 0 0 8px; /* Borde más redondeado */
-    outline: none;
-    width: 100%; /* Asegura que el input ocupe todo el ancho del contenedor */
-  }
-  
-  .search button {
-    background-color: transparent;
-    border: 1px solid #ced4da;
-    border-left: none;
-    border-radius: 0 8px 8px 0; /* Borde más redondeado */
-    padding: 5px 10px;
-    cursor: pointer;
-  }
-  
-  .search button img {
-    height: 20px;
-  }
-  
+
   .nav-icons {
-    display: flex;
-    align-items: center;
+    width: 100%;
+    justify-content: center;
   }
-  
-  .nav-icons a {
-    position: relative;
-    margin-left: 20px;
-    text-decoration: none;
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    padding: 10px;
   }
-  
-  .nav-icons img {
-    height: 24px;
+
+  .search input {
+    max-width: 100%;
   }
-  
-  .badge {
-    position: absolute;
-    top: -5px;
-    right: -10px;
-    background-color: red;
-    color: white;
-    border-radius: 50%;
-    padding: 2px 6px;
-    font-size: 12px;
-  }
-  
-  /* Media queries para diferentes tamaños de pantalla */
-  @media (max-width: 768px) {
-    .navbar {
-      flex-direction: column;
-      align-items: center; /* Centra los elementos verticalmente */
-    }
-  
-    .search {
-      width: 100%;
-      margin: 10px 0;
-    }
-  
-    .nav-icons {
-      width: 100%;
-      justify-content: center; /* Centra los íconos */
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .navbar {
-      padding: 10px;
-    }
-  
-    .search input {
-      max-width: 100%;
-    }
-  }
-  
+}
