@@ -1,0 +1,104 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f9fa; /* Cambia el color según tu preferencia */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 25px; /* Borde más redondeado */
+    margin-bottom: 3rem; /* Margen inferior de 3rem */
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo img {
+    height: 30px;
+    margin-right: 10px;
+  }
+  
+  .search {
+    display: flex;
+    align-items: center;
+    flex-grow: 1; /* Permite que el contenedor crezca */
+    max-width: 600px; /* Ancho máximo del contenedor */
+    margin: 0 auto; /* Centra el contenedor horizontalmente */
+  }
+  
+  .search input {
+    padding: 5px 10px;
+    border: 1px solid #ced4da;
+    border-radius: 8px 0 0 8px; /* Borde más redondeado */
+    outline: none;
+    width: 100%; /* Asegura que el input ocupe todo el ancho del contenedor */
+  }
+  
+  .search button {
+    background-color: transparent;
+    border: 1px solid #ced4da;
+    border-left: none;
+    border-radius: 0 8px 8px 0; /* Borde más redondeado */
+    padding: 5px 10px;
+    cursor: pointer;
+  }
+  
+  .search button img {
+    height: 20px;
+  }
+  
+  .nav-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .nav-icons a {
+    position: relative;
+    margin-left: 20px;
+    text-decoration: none;
+  }
+  
+  .nav-icons img {
+    height: 24px;
+  }
+  
+  .badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+  }
+  
+  /* Media queries para diferentes tamaños de pantalla */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: center; /* Centra los elementos verticalmente */
+    }
+  
+    .search {
+      width: 100%;
+      margin: 10px 0;
+    }
+  
+    .nav-icons {
+      width: 100%;
+      justify-content: center; /* Centra los íconos */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .navbar {
+      padding: 10px;
+    }
+  
+    .search input {
+      max-width: 100%;
+    }
+  }
+  
