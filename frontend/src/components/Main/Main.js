@@ -14,7 +14,6 @@ const Main = () => {
         {/* <Route path="/" element={<Home/>}></Route> */} /* Aqui se usa la ruta
         <Route path="/" element={<Home/>}></Route>
         <Route path="/checkout" element={<Checkout/>}></Route>
-        <Route path="/product#" element={<ProductEx/>}></Route>
         <Route path="/productPage" element={<ProductPage/>}></Route>
         <Route path="/cart" element={<Cart/>}></Route>
 
