@@ -1,10 +1,10 @@
 package com.example.p03.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.CrossOrigin;
+// import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -15,8 +15,11 @@ import jakarta.validation.Valid;
 
 import java.util.*;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.p03.exception.ExcepcionRecursoNoEncontrado;
@@ -40,33 +43,31 @@ public class ProductController {
     public Product getProduct(@PathVariable Long id) throws ExcepcionRecursoNoEncontrado{
         return productService.getProduct(id);
     }
-
-    @GetMapping("/deleteProduct/{id}") 
-    public ResponseEntity<String> eliminar(@PathVariable Long id) {
-        if (id > 0) {
-            productService.eliminar(id);
-        }
-        return ResponseEntity.ok("Product deleted successfully"); 
-    }
+    
 
     @PostMapping("/addProduct")
-    public ResponseEntity<String> addProduct(@Valid Product product, BindingResult br) {
-        if (br.hasErrors()) {
-            return ResponseEntity.ok("Data received unsuccessfully");
-        }
-        productService.guardar(product);
-
-        return ResponseEntity.ok("Data received successfully");
+    @ResponseStatus(HttpStatus.CREATED)
+    public Product addProduct(@Valid @RequestBody Product product) {
+        return productService.saveProduct(product);
     }
 
-    @PostMapping("/editProduct")
-    public ResponseEntity<String> editProduct(@Valid Product product, BindingResult br) {
-        if (br.hasErrors()) {
-            return ResponseEntity.ok("Data received unsuccessfully");
-        }
-        productService.guardar(product);
+    @PutMapping("/editProduct/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void updateProduct(@PathVariable long id, @Valid @RequestBody Product product) throws ExcepcionRecursoNoEncontrado{
+        productService.updateProduct(id, product);
+    }
 
-        return ResponseEntity.ok("Data received successfully");
+    @DeleteMapping("/deleteProduct/{id}") 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteProduct(@PathVariable Long id) {
+        if (id > 0) {
+            productService.deleteProduct(id);
+        } 
+    }
+
+    @GetMapping({ "/searchByName/" })
+    public ResponseEntity<List<Product>> searchProducts(@RequestParam String name) {
+        return ResponseEntity.ok(productService.searchProductByName(name));
     }
 
 }

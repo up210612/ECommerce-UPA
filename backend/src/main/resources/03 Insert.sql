@@ -1,4 +1,4 @@
-use FULL;
+use ECOMMERCE;
 
 INSERT INTO clients VALUES
 (1, 'Davolio', 'Nancy', '4491234567'),

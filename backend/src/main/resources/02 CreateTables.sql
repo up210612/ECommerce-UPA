@@ -19,7 +19,9 @@ CREATE TABLE orders (
 CREATE TABLE products (
   id_product int(10) AUTO_INCREMENT PRIMARY KEY,
   product_name varchar(40),
-  unit_price decimal(12,4) check(unit_price > 0)
+  unit_price decimal(12,4) check(unit_price > 0),
+  product_description VARCHAR(150),
+  product_image_route VARCHAR(100)
 );
 
 CREATE TABLE orderDetails (
@@ -32,3 +34,11 @@ CREATE TABLE orderDetails (
   CONSTRAINT ord_det FOREIGN KEY (id_order)   REFERENCES orders (id_order),
   CONSTRAINT det_pro FOREIGN KEY (id_product) REFERENCES products (id_product)
   );
+
+CREATE TABLE INVENTORY (
+    id_inventory INT PRIMARY KEY AUTO_INCREMENT,
+    id_product INT,
+    size VARCHAR(20) NOT NULL,
+    available_quantity INT NOT NULL check(available_quantity >= 0),
+    FOREIGN KEY (id_product) REFERENCES products(id_product)
+);

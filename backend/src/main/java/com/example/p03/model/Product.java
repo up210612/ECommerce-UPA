@@ -1,7 +1,7 @@
 package com.example.p03.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotEmpty;
+// import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
 
 @Data
@@ -16,4 +16,8 @@ public class Product {
     private String productName;
 
     private long unitPrice;
+
+    private String productDescription;
+
+    private String productImageRoute;
 }
