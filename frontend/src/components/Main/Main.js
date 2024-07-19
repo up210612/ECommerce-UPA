@@ -4,6 +4,7 @@ import Checkout from '../Checkout/Checkout';
 import Home from '../Home/Home';
 import ProductEx from '../Product/Product';
 import ProductPage from '../ProductPage/ProductPage';
+import Cart from '../Cart/Cart';
 // import Home from '../Home/Home';  Se importa el componente
 
 const Main = () => {
@@ -15,7 +16,7 @@ const Main = () => {
         <Route path="/checkout" element={<Checkout/>}></Route>
         <Route path="/product#" element={<ProductEx/>}></Route>
         <Route path="/productPage" element={<ProductPage/>}></Route>
-
+        <Route path="/cart" element={<Cart/>}></Route>
 
       </Routes>
     </BrowserRouter>
