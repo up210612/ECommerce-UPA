@@ -48,7 +48,7 @@ public class ProductService {
         updatedProduct.setProductName(newData.getProductName());
         updatedProduct.setUnitPrice(newData.getUnitPrice());
         updatedProduct.setProductDescription(newData.getProductDescription());
-        updatedProduct.setProductImageRoute(newData.getProductImageRoute());
+        updatedProduct.setProductCategory(newData.getProductCategory());
         ProductRepository.save(updatedProduct);
     }
 

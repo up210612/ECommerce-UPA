@@ -1,6 +1,6 @@
 use ECOMMERCE;
 
-INSERT INTO clients VALUES
+INSERT INTO clients (id_client, last_name, first_name, celular) VALUES
 (1, 'Davolio', 'Nancy', '4491234567'),
 (2, 'Fuller', 'Andrew', ''),
 (3, 'Leverling', 'Janet', ''),
@@ -3083,6 +3083,3 @@ INSERT INTO orderdetails (id_order, id_product, unit_price, quantity, discount) 
 (11077, 73, '15.0000', 2, 0.01),
 (11077, 75, '7.7500', 4, 0),
 (11077, 77, '13.0000', 2, 0);
-
-
-
