@@ -5,15 +5,36 @@ CREATE TABLE clients (
   id_client int(10) AUTO_INCREMENT PRIMARY KEY,
   last_name varchar(20) NOT NULL,
   first_name varchar(10),
-  celular varchar(10)
+  celular varchar(10),
+  email varchar(60),
+  password VARCHAR(255)
+);
+
+CREATE TABLE shippingaddress(
+  id_address int(10) AUTO_INCREMENT PRIMARY KEY,
+  street VARCHAR(150) NOT NULL,
+  street_number VARCHAR(150) NOT NULL,
+  apartment VARCHAR(150),
+  country VARCHAR(150) NOT NULL,
+  county_state VARCHAR(150) NOT NULL,
+  zipcode INT
 );
 
 CREATE TABLE orders (
   id_order int(10) AUTO_INCREMENT PRIMARY KEY,
   id_client int(10),
+  id_address int(10),
   order_date date,
+  totalAmount DECIMAL(12, 4),
   CONSTRAINT Client_Ord FOREIGN KEY (id_client) 
-            REFERENCES clients (id_client)
+            REFERENCES clients (id_client),
+  FOREIGN KEY (id_address) REFERENCES shippingaddress (id_address)
+);
+
+
+CREATE TABLE CATEGORIES(
+  id_category INT(10) PRIMARY KEY AUTO_INCREMENT,
+  category_name VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE products (
@@ -21,8 +42,10 @@ CREATE TABLE products (
   product_name varchar(40),
   unit_price decimal(12,4) check(unit_price > 0),
   product_description VARCHAR(150),
-  product_image_route VARCHAR(100)
+  product_category INT(10),
+  FOREIGN KEY (product_category) REFERENCES categories(id_category)
 );
+
 
 CREATE TABLE orderDetails (
   id_order int(10),
@@ -36,9 +59,17 @@ CREATE TABLE orderDetails (
   );
 
 CREATE TABLE INVENTORY (
-    id_inventory INT PRIMARY KEY AUTO_INCREMENT,
-    id_product INT,
+    id_inventory INT(10) PRIMARY KEY AUTO_INCREMENT,
+    id_product INT(10),
     size VARCHAR(20) NOT NULL,
     available_quantity INT NOT NULL check(available_quantity >= 0),
     FOREIGN KEY (id_product) REFERENCES products(id_product)
 );
+
+
+CREATE TABLE PRODUCTIMAGES(
+  id_product_image INT(10) PRIMARY KEY AUTO_INCREMENT,
+  id_product INT(10),
+  product_image_route VARCHAR(150) NOT NULL,
+  FOREIGN KEY (id_product) REFERENCES products(id_product)
+  );
