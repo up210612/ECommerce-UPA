@@ -3,10 +3,12 @@ import CheckoutSummary from "./CheckoutSummary";
 import ButtonAppBar from "../Navbar";
 // import { useDispatch } from "react-redux";
 // import { useSelector } from "react-redux";
-// import { useEffect } from "react";
+// import { useEffect, useState } from "react";
 // import { getProducts } from "../../slices/productSlice";
 
 export default function Checkout() {
+
+    // const {query, setQuery} = useState('');
     // const products = useSelector((state) => state.product.list);
     // const dispatch = useDispatch();
 
@@ -15,6 +17,18 @@ export default function Checkout() {
     //     .then(response => response.json())
     //     .then(data => dispatch(getProducts(data)))
     // },[dispatch])
+
+    // const handleInputChange = (event) => {
+    //     console.clear();
+    //         if(event.target.value != ""){
+    //             fetch(`http://localhost:8080/products/searchByName/?name=${event.target.value}`)
+    //             .then(response => response.json())
+    //             .then(data => data.map(producto => {
+    //                 console.log("Product ID : " + producto.idProduct + " " + producto.productName)
+    //             }));
+    //         }
+    // }
+    
 
     return (
         <div>
@@ -29,6 +43,8 @@ export default function Checkout() {
                     </div>
                 </div>
             </div>
+
+            {/* <input onChange={handleInputChange}></input> */}
         </div>
     )
 }

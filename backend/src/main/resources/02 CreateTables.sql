@@ -16,7 +16,7 @@ CREATE TABLE shippingaddress(
   street_number VARCHAR(150) NOT NULL,
   apartment VARCHAR(150),
   country VARCHAR(150) NOT NULL,
-  county_state VARCHAR(150) NOT NULL,
+  country_state VARCHAR(150) NOT NULL,
   zipcode INT
 );
 
