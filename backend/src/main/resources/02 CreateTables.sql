@@ -17,7 +17,7 @@ CREATE TABLE shippingaddress(
   apartment VARCHAR(150),
   country VARCHAR(150) NOT NULL,
   country_state VARCHAR(150) NOT NULL,
-  zipcode INT
+  zipcode VARCHAR(5) NOT NULL
 );
 
 CREATE TABLE orders (
@@ -42,8 +42,8 @@ CREATE TABLE products (
   product_name varchar(40),
   unit_price decimal(12,4) check(unit_price > 0),
   product_description VARCHAR(150),
-  product_category INT(10),
-  FOREIGN KEY (product_category) REFERENCES categories(id_category)
+  id_category INT(10),
+  FOREIGN KEY (id_category) REFERENCES categories(id_category)
 );
 
 

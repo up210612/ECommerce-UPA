@@ -14,7 +14,7 @@ public class ShippingAddressDTO {
 
     private String country;
 
-    private String countyState;
+    private String countryState;
 
-    private Integer zipcode;
+    private String zipcode;
 }
