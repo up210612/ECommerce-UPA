@@ -11,7 +11,7 @@ import java.util.*;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @Query(value = "select * from products where product_name like %:name%", nativeQuery = true)
+    @Query(value = "select * from products where product_name like :name", nativeQuery = true)
     List<Product> searchProductsByName(@Param("name") String name);
 
 }

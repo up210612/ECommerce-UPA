@@ -48,7 +48,7 @@ public class ProductService {
         updatedProduct.setProductName(newData.getProductName());
         updatedProduct.setUnitPrice(newData.getUnitPrice());
         updatedProduct.setProductDescription(newData.getProductDescription());
-        updatedProduct.setProductCategory(newData.getProductCategory());
+        updatedProduct.setIdCategory(newData.getIdCategory());
         ProductRepository.save(updatedProduct);
     }
 
@@ -58,6 +58,6 @@ public class ProductService {
     }
 
     public List<Product> searchProductByName(String name){
-        return ProductRepository.searchProductsByName(name);
+        return ProductRepository.searchProductsByName("%" + name + "%");
     }
 }
