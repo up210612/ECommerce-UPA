@@ -9,6 +9,7 @@ import com.example.p03.repository.ProductRepository;
 // import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 
+import com.example.p03.dto.ProductsInfoHomeDTO;
 import com.example.p03.exception.ExcepcionRecursoNoEncontrado;
 
 import java.util.*;
@@ -24,6 +25,10 @@ public class ProductService {
     public List<Product> getProducts() {
         return ProductRepository.findAll();
     }
+    public List<ProductsInfoHomeDTO> getProductsHome() {
+        return ProductRepository.ProductsInfoHome();
+    }
+
 
     public Product getProduct(Long id) throws ExcepcionRecursoNoEncontrado {
         Optional<Product> optionalProduct = ProductRepository.findById(id);
@@ -48,7 +53,7 @@ public class ProductService {
         updatedProduct.setProductName(newData.getProductName());
         updatedProduct.setUnitPrice(newData.getUnitPrice());
         updatedProduct.setProductDescription(newData.getProductDescription());
-        updatedProduct.setProductImageRoute(newData.getProductImageRoute());
+        updatedProduct.setIdCategory(newData.getIdCategory());
         ProductRepository.save(updatedProduct);
     }
 
@@ -58,6 +63,6 @@ public class ProductService {
     }
 
     public List<Product> searchProductByName(String name){
-        return ProductRepository.searchProductsByName(name);
+        return ProductRepository.searchProductsByName("%" + name + "%");
     }
 }

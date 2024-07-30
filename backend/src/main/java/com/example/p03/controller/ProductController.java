@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.p03.dto.ProductsInfoHomeDTO;
 import com.example.p03.exception.ExcepcionRecursoNoEncontrado;
 
 
@@ -38,6 +39,11 @@ public class ProductController {
     public ResponseEntity<List<Product>> getProducts() {
         return ResponseEntity.ok(productService.getProducts());
     }
+    @GetMapping({ "/getProductsHome" })
+    public ResponseEntity<List<ProductsInfoHomeDTO>> getProductsHome() {
+        return ResponseEntity.ok(productService.getProductsHome());
+    }
+
 
     @GetMapping({ "/{id}" })
     public Product getProduct(@PathVariable Long id) throws ExcepcionRecursoNoEncontrado{
