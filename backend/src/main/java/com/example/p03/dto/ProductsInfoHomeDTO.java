@@ -10,18 +10,18 @@ import lombok.Data;
 @Schema(description = "Modelo para crear Product Info Home")
 @Data 
 public class ProductsInfoHomeDTO {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_product")
     private long idProduct;
 
     private String productName;
 
     private long unitPrice;
 
-    public ProductsInfoHomeDTO(long idProduct, String productName, long unitPrice) {
+    private String productImageRoute;
+    
+    public ProductsInfoHomeDTO(long idProduct, String productName, long unitPrice, String productImageRoute) {
         this.idProduct = idProduct;
         this.productName = productName;
         this.unitPrice = unitPrice;
+        this.productImageRoute = productImageRoute;
     }
 }

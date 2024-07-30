@@ -15,7 +15,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query(value = "select * from products where product_name like :name", nativeQuery = true)
     List<Product> searchProductsByName(@Param("name") String name);
 
-    @Query(value = "SELECT new com.example.p03.dto.ProductsInfoHomeDTO(p.id, p.productName, p.unitPrice) FROM Product p")
+    @Query("SELECT new com.example.p03.dto.ProductsInfoHomeDTO(p.idProduct, p.productName, p.unitPrice, pi.productImageRoute) " +
+           "FROM Product p JOIN ProductImages pi ON p.idProduct = pi.idProduct " +
+           "WHERE pi.productImageRoute LIKE '%Principal%'")
     List<ProductsInfoHomeDTO> ProductsInfoHome();
 
 }
