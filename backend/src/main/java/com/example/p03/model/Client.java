@@ -25,4 +25,12 @@ public class Client {
   @Pattern(regexp = "^(\\d{3}[-]?){2}\\d{4}$")
   private String celular;
     
+  @NotEmpty(message = "El email no puede estar vacio.")
+  @Pattern(regexp = "^[\\w\\.-]+@[\\w\\.-]+\\.[a-zA-Z]{2,6}$")
+  private String email;
+
+  @NotEmpty(message = "La contraseña no puede estar vacia.")
+  @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,20}$")
+  private String password;
+
 }

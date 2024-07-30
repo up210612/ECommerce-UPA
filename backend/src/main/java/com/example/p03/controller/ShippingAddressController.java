@@ -28,7 +28,7 @@ public class ShippingAddressController {
         this.shippingAddressService = shippingAddressService;
     }
 
-    @GetMapping({"all"})
+    @GetMapping({"/all"})
     public List<ShippingAddress> getAddresses(){
         return shippingAddressService.getAddresses();
     }
