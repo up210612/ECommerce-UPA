@@ -12,8 +12,8 @@ public class ProductImages {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idProductImage;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idProduct")
+    // @ManyToOne(fetch = FetchType.LAZY)
+    // @JoinColumn(name = "idProduct")
     private long idProduct;
 
     private String productImageRoute;
