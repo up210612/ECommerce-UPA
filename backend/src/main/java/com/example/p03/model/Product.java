@@ -24,6 +24,4 @@ public class Product {
 
     private String idCategory;
 
-     @OneToMany(mappedBy = "product")
-    private Set<OrderDetails> orderDetails;
 }
