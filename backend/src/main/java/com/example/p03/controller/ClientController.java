@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.example.p03.model.Client;
 import com.example.p03.service.ClientService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 
 import java.util.*;
@@ -26,7 +28,7 @@ import com.example.p03.dto.ClientDTO;
 import com.example.p03.dto.CreateClientDTO;
 
 
-
+@Tag(name = "Endpoints de clientes", description = "Lectura y altas de clientes")
 @RestController
 @RequestMapping({"/clients"})
 public class ClientController {
@@ -35,12 +37,13 @@ public class ClientController {
     public ClientController(@Autowired ClientService ClientService) {
         this.ClientService = ClientService;
     }
-
+    @Operation(summary =  "Obtener todos los clientes")
     @GetMapping({ "/all" })
     public ResponseEntity<List<Client>> getClients() {
         return ResponseEntity.ok(ClientService.getClients());
     }
 
+    @Operation(summary = "guardar cliente")
     @PostMapping("/saveClient")
     @ResponseStatus(HttpStatus.CREATED)
     public ClientDTO saveClient(@Valid @RequestBody CreateClientDTO data) {
