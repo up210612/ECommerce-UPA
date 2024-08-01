@@ -6,31 +6,31 @@ import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class OrderDetailsId implements Serializable {
-    private Integer idOrder;
-    private Integer idProduct;
+    private Long idOrder;
+    private Long idProduct;
 
     // Constructores, getters, setters, equals y hashCode
 
     public OrderDetailsId() {}
 
-    public OrderDetailsId(Integer idOrder, Integer idProduct) {
+    public OrderDetailsId(Long idOrder, Long idProduct) {
         this.idOrder = idOrder;
         this.idProduct = idProduct;
     }
 
-    public Integer getIdOrder() {
+    public Long getIdOrder() {
         return idOrder;
     }
 
-    public void setIdOrder(Integer idOrder) {
+    public void setIdOrder(Long idOrder) {
         this.idOrder = idOrder;
     }
 
-    public Integer getIdProduct() {
+    public Long getIdProduct() {
         return idProduct;
     }
 
-    public void setIdProduct(Integer idProduct) {
+    public void setIdProduct(Long idProduct) {
         this.idProduct = idProduct;
     }
 
