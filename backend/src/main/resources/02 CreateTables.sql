@@ -25,7 +25,7 @@ CREATE TABLE orders (
   id_client int(10),
   id_address int(10),
   order_date date,
-  totalAmount DECIMAL(12, 4),
+  total_amount DECIMAL(12, 4),
   CONSTRAINT Client_Ord FOREIGN KEY (id_client) 
             REFERENCES clients (id_client),
   FOREIGN KEY (id_address) REFERENCES shippingaddress (id_address)

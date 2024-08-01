@@ -2,7 +2,9 @@ package com.example.p03.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import java.util.*;
+import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Data
 @Entity
@@ -13,12 +15,18 @@ public class Order {
     @Column(name = "id_order")
     private long idOrder;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_employee", nullable = false)
-    private Client employee;  // transient
-    
-    @Column(name = "order_date")
-    @Temporal(TemporalType.DATE)
-    private Date orderDate;
+    private String idClient;
 
+    private String idAddress;
+
+    
+    @JsonFormat(pattern = "yyyy-MM-dd") 
+    private LocalDate orderDate;
+
+    @PrePersist
+    public void PrePersist() {
+        orderDate = LocalDate.now();
+    }
+
+    private double totalAmount;
 }
