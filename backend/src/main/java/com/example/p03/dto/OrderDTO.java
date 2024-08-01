@@ -11,11 +11,11 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @Data
 public class OrderDTO {
 
-    private long idOrder;
+    private Long idOrder;
     
-    private String idClient;
+    private Long idClient;
 
-    private String  idAddress;
+    private Long  idAddress;
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate orderDate;

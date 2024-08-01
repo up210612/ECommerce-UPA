@@ -9,9 +9,9 @@ import java.util.Date;
 @Data
 public class CreateOrderDTO {
 
-    private String idClient;
+    private Long idClient;
 
-    private String  idAddress;
+    private Long  idAddress;
 
     @JsonFormat(pattern = "yyyy-MM-dd") 
     private Date orderDate;

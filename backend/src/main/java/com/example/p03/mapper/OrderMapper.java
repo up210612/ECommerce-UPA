@@ -18,12 +18,16 @@ import java.util.List;
 )
 public interface OrderMapper{
 
-    OrderDTO toDTO (Order model);
+    // OrderDTO toDTO (Order model);
 
-    List<OrderDTO> toDTO(List<Order> model);
+    // List<OrderDTO> toDTO(List<Order> model);
 
     @Mapping(target = "idOrder", ignore = true)
     @Mapping(target = "orderDate", ignore = true)
     Order toModel(CreateOrderDTO data);
+
+    @Mapping(source = "client.idClient", target = "idClient")
+    @Mapping(source = "address.idAddress", target = "idAddress")
+    OrderDTO toResponseDTO(Order model);
     
 }

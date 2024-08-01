@@ -32,7 +32,7 @@ public class OrderController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Order>> getOrders() {
+    public ResponseEntity<List<OrderDTO>> getOrders() {
         return ResponseEntity.ok(orderService.getOrders());
     }
 
