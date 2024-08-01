@@ -8,17 +8,25 @@ import lombok.Data;
 @Table(name = "orderdetails")
 public class OrderDetails {
 
-    @Id
-    @OneToMany
-    @JoinColumn(name = "id_order")
+    @EmbeddedId
+    private OrderDetailsId id;
+
+    @ManyToOne
+    @MapsId("idOrder")
+    @JoinColumn(name = "id_order", referencedColumnName = "id_order")
     private Order order;
 
-    @Id
     @ManyToOne
-    @JoinColumn(name = "id_product")
+    @MapsId("idProduct")
+    @JoinColumn(name = "id_product", referencedColumnName = "id_product")
     private Product product;
 
+    @Column(name = "unit_price")
     private Double unitPrice;
+
+    @Column(name = "quantity")
     private Integer quantity;
+
+    @Column(name = "discount")
     private Double discount;
 }

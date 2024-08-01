@@ -3,6 +3,7 @@ package com.example.p03.model;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDate;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -28,5 +29,8 @@ public class Order {
         orderDate = LocalDate.now();
     }
 
-    private double totalAmount;
+    private Double totalAmount;
+
+    @OneToMany(mappedBy = "order")
+    private Set<OrderDetails> orderDetails;
 }
