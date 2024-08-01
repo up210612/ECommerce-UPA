@@ -26,21 +26,21 @@ export default function Carrousell() {
       <div class="carousel-inner">
         <div class="carousel-item active">
           <img
-            src="https://placehold.co/1550x550"
+            src="https://placehold.co/1450x550"
             alt="Oferta imagen"
             class="max-w-full h-auto"
           />
         </div>
         <div class="carousel-item">
           <img
-            src="https://placehold.co/1550x550"
+            src="https://placehold.co/1450x550"
             alt="Oferta imagen"
             class="max-w-full h-auto"
           />
         </div>
         <div class="carousel-item">
           <img
-            src="https://placehold.co/1550x550"
+            src="https://placehold.co/1450x550"
             alt="Oferta imagen"
             class="max-w-full h-auto"
           />

@@ -3,9 +3,9 @@
   background: #fafafa;
   
   /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(to right, rgb(255, 255, 255), rgb(25, 27, 31));
+  background: -webkit-linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255));
   
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  background: linear-gradient(to right, rgb(242, 241, 243), rgb(54, 56, 59))
+  background: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255))
   }
 
