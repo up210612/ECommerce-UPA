@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.p03.exception.ExcepcionRecursoNoEncontrado;
+import com.example.p03.dto.ClientDTO;
+import com.example.p03.dto.CreateClientDTO;
+
 
 
 @RestController
@@ -37,5 +39,11 @@ public class ClientController {
     @GetMapping({ "/all" })
     public ResponseEntity<List<Client>> getClients() {
         return ResponseEntity.ok(ClientService.getClients());
+    }
+
+    @PostMapping("/saveClient")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ClientDTO saveClient(@Valid @RequestBody CreateClientDTO data) {
+        return ClientService.save(data);
     }
 }
