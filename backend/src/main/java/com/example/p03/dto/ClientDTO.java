@@ -6,16 +6,16 @@ import lombok.Data;
 @Schema(description = "Modelo para crear Clients")
 @Data
 public class ClientDTO {
-    
-    private int id_client;
-    
-    private String last_name;
+     
+  private Long idClient;
 
-    private String first_name;
+  private String lastName;
 
-    private String celular;
+  private String firstName;
 
-    private String email;
+  private String celular;
 
-    private String password;
+  private String email;
+
+  private String password;
 }

@@ -44,6 +44,6 @@ public class ClientController {
     @PostMapping("/saveClient")
     @ResponseStatus(HttpStatus.CREATED)
     public ClientDTO saveClient(@Valid @RequestBody CreateClientDTO data) {
-        return ClientService.save(data);
+        return ClientService.saveClientDTO(data);
     }
 }

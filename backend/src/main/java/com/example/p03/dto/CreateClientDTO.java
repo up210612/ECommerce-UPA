@@ -7,13 +7,15 @@ import lombok.Data;
 @Data
 public class CreateClientDTO {
     
-    private String last_name;
 
-    private String first_name;
+  private String lastName;
 
-    private String celular;
+  private String firstName;
 
-    private String email;
+  private String celular;
 
-    private String password;
+  private String email;
+
+  private String password;
+  
 }
