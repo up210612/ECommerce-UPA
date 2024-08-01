@@ -43,7 +43,7 @@ public class ClientService {
         return result;
     }
 
-    public ClientDTO save (CreateClientDTO data){
+    public ClientDTO saveClientDTO(CreateClientDTO data){
 
         Client model = ClientMapper.toModel(data);
         Client result = ClientRepository.save(model);
