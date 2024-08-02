@@ -2,13 +2,13 @@ import React from 'react';
 import './ProductDetails.css';
 
 const ProductDetails = ({ product }) => {
-  const sizes = ['XS', 'S', 'M', 'L', 'XL']; 
+  const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 
   return (
-    <div className="product-details"> 
-      <h1>TituloProducto</h1>
-      <p>DescripcionProducto</p>
-      <h3>PrecioProducto</h3>
+    <div className="product-details">
+      <h1>{product.productName}</h1>
+      <p>{product.productDescription || 'Sin descripción'}</p>
+      <h3>${product.unitPrice}</h3>
 
       <div>
         <h4>Talla:</h4>
