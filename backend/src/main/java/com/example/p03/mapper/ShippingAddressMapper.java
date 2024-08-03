@@ -9,12 +9,14 @@ import com.example.p03.model.ShippingAddress;
 import com.example.p03.dto.CreateShippingAddressDTO;
 import com.example.p03.dto.ShippingAddressDTO;
 import java.util.List;
+import java.util.*;
 
 @Mapper(
   componentModel = "spring", 
   injectionStrategy = InjectionStrategy.CONSTRUCTOR, 
   nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE
 )
+
 public interface ShippingAddressMapper {
 
     ShippingAddressDTO toDTO (ShippingAddress model);

@@ -1,5 +1,8 @@
 package com.example.p03.model;
 
+import java.util.Set;
+
+
 import jakarta.persistence.*;
 // import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
@@ -20,4 +23,5 @@ public class Product {
     private String productDescription;
 
     private String idCategory;
+
 }

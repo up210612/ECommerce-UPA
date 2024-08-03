@@ -1,8 +1,12 @@
 package com.example.p03.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Data;
-import java.util.*;
+import java.time.LocalDate;
+import java.util.Set;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Data
 @Entity
@@ -11,14 +15,29 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_order")
-    private long idOrder;
+    private Long idOrder;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_employee", nullable = false)
-    private Client employee;  // transient
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_client", referencedColumnName = "id_client")
+    private Client client;
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_address", referencedColumnName = "id_address")
+    private ShippingAddress address;
+
     
-    @Column(name = "order_date")
-    @Temporal(TemporalType.DATE)
-    private Date orderDate;
+    @JsonFormat(pattern = "yyyy-MM-dd") 
+    private LocalDate orderDate;
 
+    @PrePersist
+    public void PrePersist() {
+        orderDate = LocalDate.now();
+    }
+
+    private Double totalAmount;
+
+    @OneToMany(mappedBy = "order")
+    private Set<OrderDetails> orderDetails;
 }

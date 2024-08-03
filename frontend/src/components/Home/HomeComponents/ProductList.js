@@ -1,33 +1,78 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ProductItem from './ProductItem';
 import './ProductList.css';
 
-export default function ProductList() {
-  const products = [
-    { id: 1, title: "Título del producto 1", category: "Categoría 1", rating: "★★★★☆", attributes: "Atributos", price: "$00.00" },
-    { id: 2, title: "Título del producto 2", category: "Categoría 2", rating: "★★★☆☆", attributes: "Atributos", price: "$00.00" },
-    { id: 3, title: "Título del producto 3", category: "Categoría 3", rating: "★★★★★", attributes: "Atributos", price: "$00.00" },
-    { id: 4, title: "Título del producto 4", category: "Categoría 4", rating: "★★☆☆☆", attributes: "Atributos", price: "$00.00" },
-    { id: 5, title: "Título del producto 5", category: "Categoría 5", rating: "★★★★☆", attributes: "Atributos", price: "$00.00" },
-    { id: 6, title: "Título del producto 6", category: "Categoría 6", rating: "★★★☆☆", attributes: "Atributos", price: "$00.00" },
-    // Add more products as needed
-  ];
+export default function ProductList({ setSelectedProduct }) {
+  const [products, setProducts] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 10;
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/products/getProductsHome');
+        const data = await response.json();
+        const productsWithRating = data.map(product => ({
+          ...product,
+          rating: generateRandomRating()
+        }));
+        setProducts(productsWithRating);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
+  const generateRandomRating = () => {
+    const rating = Math.floor(Math.random() * 5) + 1;
+    return '★'.repeat(rating) + '☆'.repeat(5 - rating);
+  };
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const handlePreviousPage = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+  const handleProductClick = (product) => {
+    setSelectedProduct(product); // Establece el producto seleccionado
+  };
 
   return (
-    <div className="product-grid">
-      {products.map((product) => (
-        <ProductItem
-          key={product.id}
-          id={product.id}
-          imageSrc="https://placehold.co/150x150"
-          altText={`Producto ${product.id}`}
-          title={product.title}
-          category={product.category}
-          rating={product.rating}
-          attributes={product.attributes}
-          price={product.price}
-        />
-      ))}
+    <div>
+      <div className="product-grid">
+        {currentProducts.map((product) => (
+          <div key={product.idProduct} onClick={() => handleProductClick(product)}>
+            <ProductItem
+              id={product.idProduct}
+              imageSrc={product.productImageRoute}
+              altText={`Producto ${product.idProduct}`}
+              title={product.productName}
+              category={product.idCategory ? product.idCategory : 'Sin categoría'}
+              rating={product.rating}
+              attributes={product.productDescription ? product.productDescription : 'Sin descripción'}
+              price={`$${product.unitPrice}`}
+            />
+          </div>
+        ))}
+      </div>
+      <div className="pagination-controls">
+        <button onClick={handlePreviousPage} disabled={currentPage === 1}>
+          Anterior
+        </button>
+        <span>Página {currentPage}</span>
+        <button onClick={handleNextPage} disabled={indexOfLastProduct >= products.length}>
+          Siguiente
+        </button>
+      </div>
     </div>
   );
 }

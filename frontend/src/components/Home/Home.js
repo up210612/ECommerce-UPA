@@ -3,23 +3,23 @@ import ProductList from "./HomeComponents/ProductList";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 
-export default function Home() {
+export default function Home({ setSelectedProduct }) {
   return (
     <div>
-        <Navbar/>
-      <div class="container-fluid p-0">
-        <div class="row no-gutters">
-          <div class="col-12">
-            <div class="banner">
+      <Navbar />
+      <div className="container-fluid p-0">
+        <div className="row no-gutters">
+          <div className="col-12">
+            <div className="banner">
               <Banner />
             </div>
-            <div class="container mt-4">
-              <ProductList />
+            <div className="container mt-4">
+              <ProductList setSelectedProduct={setSelectedProduct} />
             </div>
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
