@@ -1,0 +1,15 @@
+package com.example.p03.dto;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
+
+import java.util.List;
+
+@Schema(description = "Modelo para obtener toda la información del producto incluyendo todas las imágenes")
+@Data 
+public class ProductAllInfoDTO {
+    private long idProduct;
+    private String productName;
+    private long unitPrice;
+    private List<String> productImages;
+}
