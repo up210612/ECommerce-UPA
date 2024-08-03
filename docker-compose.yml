@@ -30,8 +30,8 @@ services:
       DB_URL: mongodb://db/gamify
     volumes:
       - ./backend/app:/app/app
-    depends_on:
-      - db
+    #depends_on:
+    #  - db
  
 
   #contenedor de base de datos  
