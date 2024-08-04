@@ -5,7 +5,7 @@ import ButtonAppBar from '../Navbar/Navbar';
 import ProductList from '../Home/HomeComponents/ProductList';
 import Footer from '../Footer/Footer';
 
-const ProductPage = ({ product }) => {
+const ProductPage = () => {
   return (
     <div>
       <ButtonAppBar />
@@ -15,7 +15,7 @@ const ProductPage = ({ product }) => {
             <ProductItem />
           </div>
           <div className="col-md-4 ">
-            <ProductDetails product={product} />
+            <ProductDetails/>
           </div>
         </div>
         <div className="row align-items-start">
