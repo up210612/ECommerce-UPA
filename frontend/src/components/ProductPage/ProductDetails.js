@@ -1,14 +1,14 @@
 import React from 'react';
 import './ProductDetails.css';
 
-const ProductDetails = ({ product }) => {
+const ProductDetails = () => {
   const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 
   return (
     <div className="product-details">
-      <h1>{product.productName}</h1>
-      <p>{product.productDescription || 'Sin descripción'}</p>
-      <h3>${product.unitPrice}</h3>
+      <h1>Test</h1>
+      <p>{'Test' || 'Sin descripción'}</p>
+      <h3>$500</h3>
 
       <div>
         <h4>Talla:</h4>
@@ -20,16 +20,12 @@ const ProductDetails = ({ product }) => {
       </div>
 
       <div>
-        <h4>Selecciona el Género:</h4>
-        <select defaultValue="hombre">
-          <option value="hombre">Hombre</option>
-          <option value="mujer">Mujer</option>
-        </select>
-      </div>
-
-      <div>
         <h4>Selecciona la Cantidad:</h4>
         <input type="number" min="1" defaultValue="1" />
+      </div>
+
+      <div class="mt-3 d-grid gap-2 mx-auto">
+        <button class="btn btn-primary" type="button">Agregar al carrito</button>
       </div>
     </div>
   );
