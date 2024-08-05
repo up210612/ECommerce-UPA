@@ -76,7 +76,9 @@ public class ProductService {
         dto.setIdProduct(((Number) products.get(0)[0]).longValue());
         dto.setProductName((String) products.get(0)[1]);
         dto.setUnitPrice(((Number) products.get(0)[2]).longValue());
-        dto.setProductImages(products.stream().map(product -> (String) product[3]).collect(Collectors.toList()));
+        dto.setIdCategory(((Number) products.get(0)[3]).longValue());
+        dto.setCategoryName((String) products.get(0)[4]);
+        dto.setProductImages(products.stream().map(product -> (String) product[5]).collect(Collectors.toList()));
         
         return dto;
     }

@@ -11,5 +11,7 @@ public class ProductAllInfoDTO {
     private long idProduct;
     private String productName;
     private long unitPrice;
+    private long idCategory;
+    private String categoryName;
     private List<String> productImages;
 }
