@@ -11,6 +11,7 @@ import jakarta.validation.Valid;
 
 import com.example.p03.dto.ProductAllInfoDTO;
 import com.example.p03.dto.ProductsInfoHomeDTO;
+import com.example.p03.dto.SizesDTO;
 import com.example.p03.exception.ExcepcionRecursoNoEncontrado;
 
 import java.util.*;
@@ -79,6 +80,15 @@ public class ProductService {
         dto.setIdCategory(((Number) products.get(0)[3]).longValue());
         dto.setCategoryName((String) products.get(0)[4]);
         dto.setProductImages(products.stream().map(product -> (String) product[5]).collect(Collectors.toList()));
+
+        List<Object[]> productSizes = ProductRepository.ProductSizesById(id);
+
+        dto.setSizes(productSizes.stream().map(productSize -> {
+            SizesDTO size = new SizesDTO();
+            size.setSizeName((String) productSize[0]);
+            size.setQuantity(((Number) productSize[1]).longValue());
+            return size;
+        }).collect(Collectors.toList()));
         
         return dto;
     }

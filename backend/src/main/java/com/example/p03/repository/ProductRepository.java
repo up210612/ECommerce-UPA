@@ -24,4 +24,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 
     @Query(value = "select p.id_product, p.product_name, p.unit_price, p.id_category , c.category_name ,pi.product_image_route from products p join productimages pi on p.id_product = pi.id_product join categories c on p.id_category = c.id_category where p.id_product = :id", nativeQuery = true)
     List<Object[]> AllInfoProductById(@Param("id") Long id);
+
+    @Query(value = "select size, available_quantity from inventory where id_product = :id", nativeQuery = true)
+    List<Object[]> ProductSizesById(@Param("id") Long id);
 }
