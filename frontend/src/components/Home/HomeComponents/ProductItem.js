@@ -6,7 +6,7 @@ const ProductItem = ({ id, imageSrc, altText, title, category, rating, attribute
   <div className="product-item">
     <img src={imageSrc} alt={altText} className="product-image" />
     <p className="product-category">{category}</p>
-    <Link to={`/productPage`} className="product-title">{title}</Link>
+    <Link to={`/productPage/${id}`} className="product-title">{title}</Link>
     <div className="product-rating">{rating}</div>
     <p className="product-attributes">{attributes}</p>
     <p className="product-price">{price}</p>

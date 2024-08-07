@@ -3,7 +3,7 @@ import ProductList from "./HomeComponents/ProductList";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
 
-export default function Home({ setSelectedProduct }) {
+export default function Home() {
   return (
     <div>
       <Navbar />
@@ -14,7 +14,7 @@ export default function Home({ setSelectedProduct }) {
               <Banner />
             </div>
             <div className="container mt-4">
-              <ProductList setSelectedProduct={setSelectedProduct} />
+              <ProductList />
             </div>
           </div>
         </div>

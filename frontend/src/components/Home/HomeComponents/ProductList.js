@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ProductItem from './ProductItem';
 import './ProductList.css';
 
-export default function ProductList({ setSelectedProduct }) {
+export default function ProductList() {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 10;
@@ -43,7 +43,7 @@ export default function ProductList({ setSelectedProduct }) {
   };
 
   const handleProductClick = (product) => {
-    setSelectedProduct(product); // Establece el producto seleccionado
+     // Establece el producto seleccionado
   };
 
   return (
@@ -53,7 +53,7 @@ export default function ProductList({ setSelectedProduct }) {
           <div key={product.idProduct} onClick={() => handleProductClick(product)}>
             <ProductItem
               id={product.idProduct}
-              imageSrc={product.productImageRoute}
+              imageSrc={ "/" + product.productImageRoute}
               altText={`Producto ${product.idProduct}`}
               title={product.productName}
               category={product.idCategory ? product.idCategory : 'Sin categoría'}

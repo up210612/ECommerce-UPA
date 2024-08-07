@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.p03.dto.ProductAllInfoDTO;
 import com.example.p03.dto.ProductsInfoHomeDTO;
 import com.example.p03.exception.ExcepcionRecursoNoEncontrado;
 
@@ -47,6 +48,18 @@ public class ProductController {
     @GetMapping({ "/getProductsHome" })
     public ResponseEntity<List<ProductsInfoHomeDTO>> getProductsHome() {
         return ResponseEntity.ok(productService.getProductsHome());
+    }
+
+    @Operation(summary = "Te trae todos los productos con la ruta de las imágenes")
+    @GetMapping({ "/getAllInfoProducts" })
+    public ResponseEntity<List<ProductAllInfoDTO>> getAllInfoProducts() {
+        return ResponseEntity.ok(productService.getAllInfoProducts());
+    }
+
+    @Operation(summary = "Te trae un producto con la ruta de las imágenes")
+    @GetMapping({ "/getAllInfoProduct/{id}" })
+    public ResponseEntity<ProductAllInfoDTO> getAllInfoProductsById(@PathVariable Long id) throws ExcepcionRecursoNoEncontrado{
+        return ResponseEntity.ok(productService.getAllInfoProductById(id));
     }
 
     @Operation(summary = "Te trae un producto por id")
