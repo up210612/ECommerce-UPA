@@ -10,17 +10,19 @@ export default function Navbar() {
 
   return (
     <nav className="navbar">
-      <div className="logo">
-        <img src="/gato.png" alt="Cart Icon" />
-        <span>
+      <div className="logo" >
+      <a href="/">
+          <img src="/gato.png" alt="Cart Icon" className="large-icon" />
+        </a>
+        <div className="brand-text">
           <a className="navbar-brand" href="/">
-            E-Commerce
+            AL TIRO <br/> CON EL GATO
           </a>
-        </span>
+        </div>
       </div>
       {!isLoginPage && (
         <div className="search">
-          <input type="text" placeholder="Search for products" />
+          <input type="text" placeholder="Búsqueda de productos" />
           <button type="submit">
             <img src="/search.png" alt="Search" />
           </button>

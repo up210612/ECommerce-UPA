@@ -1,27 +1,27 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 .moving-banner {
   width: 100%;
-  background-color: #fff; /* Fondo blanco */
-  color: #000; /* Color del texto negro */
+  background-color: #fff; 
+  color: #000; 
   overflow: hidden;
   white-space: nowrap;
-  padding: 10px 0; /* Agrega un poco de padding arriba y abajo */
+  padding: 10px 0; 
   position: relative;
 }
 
 .moving-banner-content {
   display: inline-flex;
-  width: 200%; /* Asegura que el contenido ocupe el doble del ancho del contenedor */
-  animation: marquee 10s linear infinite; /* Ajusta la duración de la animación según sea necesario */
+  width: 200%; 
+  animation: marquee 10s linear infinite; 
 }
 
 .moving-banner-content span {
   display: inline-block;
-  width: 50%; /* Cada span ocupa la mitad del contenedor */
-  font-size: 24px; /* Tamaño de letra grande */
-  font-weight: bold; /* Letra negrita */
-  font-family: 'Roboto', sans-serif; /* Familia de fuente similar */
+  width: 50%; 
+  font-size: 30px; 
+  font-weight: 1000; 
+  font-family: 'Arimo', sans-serif;  
 }
 
 @keyframes marquee {
