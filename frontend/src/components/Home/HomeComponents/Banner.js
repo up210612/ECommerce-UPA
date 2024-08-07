@@ -25,6 +25,12 @@ export default function Carrousell() {
           data-bs-slide-to="2"
           aria-label="Slide 3"
         ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="3"
+          aria-label="Slide 4"
+        ></button>
       </div>
       <div className="carousel-inner">
         <div className="carousel-item active">
@@ -46,6 +52,14 @@ export default function Carrousell() {
         <div className="carousel-item">
           <img
             src=".\Images\Banners\pic3.png"
+            alt="Oferta imagen 3"
+            className="d-block w-100"
+            style={{ width: '1450px', height: '550px', objectFit: 'cover' }}
+          />
+        </div>
+        <div className="carousel-item">
+          <img
+            src=".\Images\Banners\pic4.png"
             alt="Oferta imagen 3"
             className="d-block w-100"
             style={{ width: '1450px', height: '550px', objectFit: 'cover' }}
