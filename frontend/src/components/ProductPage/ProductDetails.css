@@ -51,3 +51,17 @@
     width: 100%;
     padding: 8px;
   }
+
+  .btn-selected {
+    background-color: #ff6347; /* Color de fondo del botón seleccionado */
+    border-color: #ff6347; /* Color del borde del botón seleccionado */
+    color: white; /* Color del texto del botón seleccionado */
+  }
+  
+  /* Asegúrate de que los estilos de hover no cambien el estilo de btn-selected */
+  .btn-primary:hover, .btn-selected:hover {
+    background-color: #ff6347; /* Color de fondo del botón seleccionado */
+    border-color: #ff6347; /* Color del borde del botón seleccionado */
+    color: white; /* Color del texto del botón seleccionado */
+  }
+  
