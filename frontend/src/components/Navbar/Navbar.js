@@ -3,10 +3,12 @@ import { useLocation } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./Navbar.css"; // Archivo CSS para los estilos personalizados
+import { useSelector } from "react-redux";
 
 export default function Navbar() {
   const location = useLocation();
   const isLoginPage = location.pathname === '/login';
+  const cartItems = useSelector((state) => state.cart.items);
 
   return (
     <nav className="navbar">
@@ -29,7 +31,8 @@ export default function Navbar() {
       <div className="nav-icons">
         <a href="/cart" className="cart-icon">
           <img src="/shopping-cart.png" alt="Cart" />
-          <span className="badge">1</span>
+          {cartItems.length === 0 ? (<></>) : (<span className="badge">{cartItems.length}</span>)}
+          
         </a>
         <a href="/login" className="text-special">
           <img src="/user.png" alt="Account" /> Login
