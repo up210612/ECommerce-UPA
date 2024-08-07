@@ -1,3 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+body {
+  font-family: 'Arimo', sans-serif;
+}
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -29,10 +35,12 @@
 }
 
 .product-title {
-  font-weight: bold;
+  font-weight: 800;
   margin: 10px 0;
-  color: #0066cc;
+  color: #FF4500;
   text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.3em; 
 }
 
 .product-title:hover {
@@ -53,27 +61,57 @@
 }
 
 .add-button {
-  background-color: #4CAF50;
+  background-color: #d74a2b;
   color: white;
   border: none;
   padding: 8px 16px;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease; 
+}
+
+.add-button:hover {
+  background-color: #FF6347; 
 }
 
 .pagination-controls {
-  margin-top: 20px; /* Añadido margen superior */
+  margin-top: 20px; 
+  text-align: center; /* Centrar los botones de paginación */
+}
+
+.pagination-controls button {
+  background-color: #02010198; /* Fondo negro */
+  color: #fdfdfd; /* Texto negro */
+  border: none;
+  border-radius: 10%; /* Botones redondos */
+  padding: 10px 15px; /* Ajustar tamaño del botón */
+  font-family: 'Arimo', sans-serif; /* Fuente Arimo */
+  font-size: 14px; /* Tamaño de la fuente */
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.pagination-controls button:hover {
+  background-color: #333; /* Fondo negro más oscuro en hover */
+  color: #fff; /* Texto blanco en hover */
+}
+
+.pagination-controls span {
+  font-family: 'Arimo', sans-serif; /* Fuente Arimo */
+  font-size: 14px; /* Tamaño de la fuente */
+  color: #000; /* Texto negro */
+  margin: 0 10px; /* Espaciado entre botones y texto */
 }
 
 /* Responsive design */
 @media (max-width: 768px) {
   .product-grid {
-      grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 480px) {
   .product-grid {
-      grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 }
