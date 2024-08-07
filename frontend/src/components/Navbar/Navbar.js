@@ -11,7 +11,7 @@ export default function Navbar() {
   return (
     <nav className="navbar">
       <div className="logo">
-        <img src="/online-shop.png" alt="Cart Icon" />
+        <img src="/gato.png" alt="Cart Icon" />
         <span>
           <a className="navbar-brand" href="/">
             E-Commerce
