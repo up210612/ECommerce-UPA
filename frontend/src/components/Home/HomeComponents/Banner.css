@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap');
+
+.moving-banner {
+  width: 100%;
+  background-color: #fff; /* Fondo blanco */
+  color: #000; /* Color del texto negro */
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0; /* Agrega un poco de padding arriba y abajo */
+  position: relative;
+}
+
+.moving-banner-content {
+  display: inline-flex;
+  width: 200%; /* Asegura que el contenido ocupe el doble del ancho del contenedor */
+  animation: marquee 10s linear infinite; /* Ajusta la duración de la animación según sea necesario */
+}
+
+.moving-banner-content span {
+  display: inline-block;
+  width: 50%; /* Cada span ocupa la mitad del contenedor */
+  font-size: 24px; /* Tamaño de letra grande */
+  font-weight: bold; /* Letra negrita */
+  font-family: 'Roboto', sans-serif; /* Familia de fuente similar */
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

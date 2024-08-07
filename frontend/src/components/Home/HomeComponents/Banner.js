@@ -1,6 +1,9 @@
+import './Banner.css';
 export default function Carrousell() {
   return (
-    <div id="carouselExampleIndicators" className="carousel slide">
+    
+    <div>
+      <div id="carouselExampleIndicators" className="carousel slide">
       <div className="carousel-indicators">
         <button
           type="button"
@@ -67,6 +70,16 @@ export default function Carrousell() {
         <span className="carousel-control-next-icon" aria-hidden="true"></span>
         <span className="visually-hidden">Next</span>
       </button>
+    </div>
+    <div className="moving-banner">
+      <div className="moving-banner-content">
+        <span>NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp;  </span>
+        <span>NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp;   </span>
+        <span>NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp;   </span>
+        <span>NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp;   </span>
+        <span>NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp;   </span>
+      </div>
+    </div>
     </div>
   );
 }
