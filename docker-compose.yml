@@ -14,8 +14,8 @@ services:
       - 80:5173
 
     #Definimos que va a sincronizar del host en el contenedor (izquierda host, derecha contenedor)
-    volumes:
-      - ./frontend/src:/app/src
+    #volumes:
+      #- ./frontend/src:/app/src
     
     #Definir variable de entorno
     environment:
@@ -26,12 +26,12 @@ services:
     build: ./backend
     ports:
       - 3000:3000
-    environment:
-      DB_URL: mongodb://db/gamify
-    volumes:
-      - ./backend/app:/app/app
-    depends_on:
-      - db
+    #environment:
+      #DB_URL: mongodb://db/gamify
+    #volumes:
+      #- ./backend/app:/app/app
+    #depends_on:
+    #  - db
  
 
   #contenedor de base de datos  

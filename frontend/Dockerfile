@@ -23,4 +23,4 @@ COPY --chown=equipo2 . .
 EXPOSE 5173
 
 #Se inicializa un entorno de desarrollo desde el principio
-CMD [ "npm", "run", "dev" ]
+CMD [ "npm", "run", "start" ]
