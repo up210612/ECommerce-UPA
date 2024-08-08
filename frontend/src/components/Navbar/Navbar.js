@@ -4,14 +4,15 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./Navbar.css"; // Archivo CSS para los estilos personalizados
 import { useSelector } from "react-redux";
-import { useUser } from "../Login/UserContext";
 import ScrollToTopButton from "./ScrollButton";
+
 
 export default function Navbar() {
   const location = useLocation();
   const isLoginPage = location.pathname === "/login" || location.pathname === "/signin";
   const cartItems = useSelector((state) => state.cart.items);
-  const { user } = useUser();
+  const isClientAuth = useSelector((state) => state.client.isAuthentificated);
+  const clientName = useSelector((state) => state.client.firstName);
 
   return (
     <>
@@ -41,7 +42,7 @@ export default function Navbar() {
           <div className="user-info">
             <a href="/login" className="text-special">
               <img src="/user.png" alt="Account" />
-              {user ? user.nombre : "Login"}
+              {isClientAuth ? clientName : "Login"}
             </a>
           </div>
         </div>
