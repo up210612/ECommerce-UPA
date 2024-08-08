@@ -1,11 +1,5 @@
 CREATE DATABASE IF NOT EXISTS ECOMMERCE;
 
-CREATE USER 'e-commerce'@'localhost' IDENTIFIED BY 'e-commerce';
-
-GRANT ALL PRIVILEGES ON ECOMMERCE.* TO 'e-commerce'@'localhost' identified by 'e-commerce';
-
-flush privileges;
-
 -- Base de datos: full
 use ECOMMERCE;
 
