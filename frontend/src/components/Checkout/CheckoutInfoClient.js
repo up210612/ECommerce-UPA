@@ -1,20 +1,25 @@
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../../slices/cartSlice";
+import { useNavigate } from 'react-router-dom';
 
 export default function CheckoutInfoCliente() {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const cartItems = useSelector((state) => state.cart.items);
 
     const [postalCode, setPostalCode] = useState("");
     const [isPostalCodeValid, setIsPostalCodeValid] = useState(true);
 
-    const [cardNumber, setCardNumber] = useState("");
-    const [cardType, setCardType] = useState("");
-    const [cardName, setCardName] = useState("");
-    const [cardCVV, setCardCVV] = useState("");
-    const [cardExpiry, setCardExpiry] = useState("");
+    const [paymentInfo, setPaymentInfo] = useState({
+        cardNumber: "",
+        cardType: "",
+        cardName: "",
+        cardCVV: "",
+        cardExpiry: ""
+    });
+
     const [isCardNumberValid, setIsCardNumberValid] = useState(true);
     const [isCardCVVValid, setIsCardCVVValid] = useState(true);
     const [isCardExpiryValid, setIsCardExpiryValid] = useState(true);
@@ -27,10 +32,34 @@ export default function CheckoutInfoCliente() {
         zipcode: ""
     });
 
+    const [countries, setCountries] = useState([]);
+    const [states, setStates] = useState([]);
     const [errorMessage, setErrorMessage] = useState(""); // Estado para el mensaje de error
 
+    const username = 'ecommerceupa'; // Reemplaza con tu nombre de usuario de GeoNames
+
+    useEffect(() => {
+        fetch(`http://api.geonames.org/countryInfoJSON?username=${username}`)
+            .then(response => response.json())
+            .then(data => setCountries(data.geonames || []))
+            .catch(error => console.error('Error fetching countries:', error));
+    }, []);
+
+    const fetchStates = (countryCode) => {
+        fetch(`http://api.geonames.org/childrenJSON?geonameId=${countryCode}&username=${username}`)
+            .then(response => response.json())
+            .then(data => setStates(data.geonames || []))
+            .catch(error => console.error('Error fetching states:', error));
+    };
+
+    const handleCountryChange = (e) => {
+        const selectedCountry = countries.find(country => country.countryName === e.target.value);
+        setAddress({ ...address, country: selectedCountry.countryName, countryState: "" });
+        fetchStates(selectedCountry.geonameId);
+    };
+
     const handlePostalCodeChange = (e) => {
-        onChange(e);
+        onChangeAddress(e);
         const { value } = e.target;
         const regex = /^[0-9]{0,5}$/;
         if (regex.test(value)) {
@@ -40,40 +69,43 @@ export default function CheckoutInfoCliente() {
     };
 
     const handleCardNumberChange = (e) => {
+        onChangePaymentInfo(e);
         const { value } = e.target;
         const regex = /^[0-9]{0,16}$/;
         if (regex.test(value)) {
-            setCardNumber(value);
+            setPaymentInfo({ ...paymentInfo, cardNumber: value });
             setIsCardNumberValid(value.length === 16);
         }
     };
 
     const handleCardCVVChange = (e) => {
+        onChangePaymentInfo(e);
         const { value } = e.target;
         const regex = /^[0-9]{0,3}$/;
         if (regex.test(value)) {
-            setCardCVV(value);
+            setPaymentInfo({ ...paymentInfo, cardCVV: value });
             setIsCardCVVValid(value.length === 3);
         }
     };
 
     const handleCardExpiryChange = (e) => {
+        onChangePaymentInfo(e);
         const { value } = e.target;
         const regex = /^(0[1-9]|1[0-2])\/?([0-9]{2})$/;
         if (value.length === 2 && !value.includes('/')) {
-            setCardExpiry(value + '/');
+            setPaymentInfo({ ...paymentInfo, cardExpiry: value + '/' });
         } else if (regex.test(value)) {
-            setCardExpiry(value);
+            setPaymentInfo({ ...paymentInfo, cardExpiry: value });
             setIsCardExpiryValid(true);
         } else {
-            setCardExpiry(value);
+            setPaymentInfo({ ...paymentInfo, cardExpiry: value });
             setIsCardExpiryValid(false);
         }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (isPostalCodeValid && isCardNumberValid && cardType && isCardCVVValid && isCardExpiryValid) {
+        if (isPostalCodeValid && isCardNumberValid && paymentInfo.cardType && isCardCVVValid && isCardExpiryValid) {
             // Lógica para completar el pedido
             const orderData = {
                 idClient: 1,
@@ -103,6 +135,13 @@ export default function CheckoutInfoCliente() {
                 console.log('Order successfully sent:', result);
                 handleClearCart();
                 setErrorMessage(""); // Limpiar el mensaje de error si la petición es exitosa
+                navigate("/confirmedOrder", {
+                    state: {
+                        paymentInfo,
+                        result
+                    }
+                });
+                
             } catch (error) {
                 console.error('Error sending order:', error);
                 setErrorMessage("Error sending order: " + error.message); // Actualizar el mensaje de error
@@ -121,9 +160,16 @@ export default function CheckoutInfoCliente() {
         dispatch(clearCart());
     };
 
-    const onChange = (e) => {
+    const onChangeAddress = (e) => {
         setAddress({
             ...address,
+            [e.target.name]: e.target.value
+        });
+    };
+
+    const onChangePaymentInfo = (e) => {
+        setPaymentInfo({
+            ...paymentInfo,
             [e.target.name]: e.target.value
         });
     };
@@ -160,11 +206,11 @@ export default function CheckoutInfoCliente() {
                 <div className="row mb-3">
                     <div className="col-6">
                         <label className="form-label">Calle</label>
-                        <input name="street" onChange={onChange} type="text" className="form-control" aria-label="Street" required />
+                        <input name="street" onChange={onChangeAddress} type="text" className="form-control" aria-label="Street" required />
                     </div>
                     <div className="col-3">
                         <label className="form-label">Número</label>
-                        <input name="streetNumber" onChange={onChange} type="text" className="form-control" aria-label="Street number" required />
+                        <input name="streetNumber" onChange={onChangeAddress} type="text" className="form-control" aria-label="Street number" required />
                     </div>
                     <div className="col-3">
                         <label className="form-label">Apartamento</label>
@@ -174,16 +220,20 @@ export default function CheckoutInfoCliente() {
                 <div className="row mb-3">
                     <div className="col-5">
                         <label className="form-label">País</label>
-                        <select name="country" onChange={onChange} className="form-select" required>
+                        <select name="country" onChange={handleCountryChange} className="form-select" required>
                             <option value="">Escoger...</option>
-                            <option value="1">...</option>
+                            {countries.map(country => (
+                                <option key={country.geonameId} value={country.countryName}>{country.countryName}</option>
+                            ))}
                         </select>
                     </div>
                     <div className="col-4">
                         <label className="form-label">Estado</label>
-                        <select name="countryState" onChange={onChange} className="form-select" required>
+                        <select name="countryState" onChange={onChangeAddress} className="form-select" required>
                             <option value="">Escoger...</option>
-                            <option value="1">...</option>
+                            {states.map(state => (
+                                <option key={state.geonameId} value={state.name}>{state.name}</option>
+                            ))}
                         </select>
                     </div>
                     <div className="col-3">
@@ -211,12 +261,13 @@ export default function CheckoutInfoCliente() {
                 <div className="mb-3">
                     <label className="form-label">Número de tarjeta</label>
                     <input
+                        name="cardNumber"
                         type="text"
                         className={`form-control ${!isCardNumberValid ? 'is-invalid' : ''}`}
                         aria-label="Número de tarjeta"
                         pattern="[0-9]{16}"
                         title="El número de tarjeta debe tener 16 dígitos"
-                        value={cardNumber}
+                        value={paymentInfo.cardNumber}
                         onChange={handleCardNumberChange}
                         required
                     />
@@ -229,23 +280,25 @@ export default function CheckoutInfoCliente() {
                 <div className="mb-3">
                     <label className="form-label">Nombre en la tarjeta</label>
                     <input
+                        name="cardName"
                         type="text"
                         className="form-control"
                         aria-label="Nombre en la tarjeta"
-                        value={cardName}
-                        onChange={(e) => setCardName(e.target.value)}
+                        value={paymentInfo.cardName}
+                        onChange={onChangePaymentInfo}
                         required
                     />
                 </div>
                 <div className="mb-3">
                     <label className="form-label">CVV</label>
                     <input
+                        name="cardCVV"
                         type="text"
                         className={`form-control ${!isCardCVVValid ? 'is-invalid' : ''}`}
                         aria-label="CVV"
                         pattern="[0-9]{3}"
                         title="El CVV debe tener 3 dígitos"
-                        value={cardCVV}
+                        value={paymentInfo.cardCVV}
                         onChange={handleCardCVVChange}
                         required
                     />
@@ -258,13 +311,14 @@ export default function CheckoutInfoCliente() {
                 <div className="mb-3">
                     <label className="form-label">Fecha de expiración (MM/YY)</label>
                     <input
+                        name="cardExpiry"
                         type="text"
                         className={`form-control ${!isCardExpiryValid ? 'is-invalid' : ''}`}
                         aria-label="Fecha de expiración"
                         placeholder="MM/YY"
                         pattern="(0[1-9]|1[0-2])\/?([0-9]{2})"
                         title="La fecha de expiración debe estar en formato MM/YY"
-                        value={cardExpiry}
+                        value={paymentInfo.cardExpiry}
                         onChange={handleCardExpiryChange}
                         maxLength="5"
                         required
@@ -277,7 +331,13 @@ export default function CheckoutInfoCliente() {
                 </div>
                 <div className="mb-3">
                     <label className="form-label">Tipo de tarjeta</label>
-                    <select className="form-select" value={cardType} onChange={(e) => setCardType(e.target.value)} required>
+                    <select
+                        name="cardType"
+                        className="form-select"
+                        value={paymentInfo.cardType}
+                        onChange={onChangePaymentInfo}
+                        required
+                    >
                         <option value="">Escoger...</option>
                         <option value="VISA">VISA</option>
                         <option value="MasterCard">MasterCard</option>
