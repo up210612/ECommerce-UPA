@@ -122,7 +122,7 @@ export default function CheckoutInfoCliente() {
             };
 
             try {
-                const response = await fetch('http://localhost:8080/orders/addFullOrder', {
+                const response = await fetch('http://209.38.174.83:8080/orders/addFullOrder', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

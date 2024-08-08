@@ -11,7 +11,7 @@ const ProductPage = () => {
   const [product, setProduct] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:8080/products/getAllInfoProduct/${id}`)
+    fetch(`http://209.38.174.83:8080/products/getAllInfoProduct/${id}`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
