@@ -4,6 +4,7 @@ import Home from '../Home/Home';
 import ProductPage from '../ProductPage/ProductPage';
 import Cart from '../Cart/Cart';
 import Login from '../Login/Login';
+import CheckoutSuccessfull from '../Checkout/CheckoutSuccessfull';
 
 const Main = () => {
 
@@ -15,6 +16,7 @@ const Main = () => {
         <Route path="/productPage/:id" element={<ProductPage/>} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/confirmedOrder" element={<CheckoutSuccessfull />} />
       </Routes>
     </BrowserRouter>
   );
