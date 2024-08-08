@@ -24,13 +24,14 @@ body {
 }
 
 .logo img.large-icon {
-  height: 40px; 
+  height: 60px; 
   width: auto; 
   margin-bottom: 5px; 
 }
 
 .brand-text {
   text-align: center; 
+  margin-left: 5px;
 }
 
 .logo .navbar-brand {
@@ -40,7 +41,6 @@ body {
   font-weight: 900; /* Aumenta el ancho del texto */
   letter-spacing: 0.3em; /* Ajusta el espaciado entre letras */
   line-height: 1; /* Remueve el espacio entre líneas */
-
 }
 
 .text-special {
@@ -48,6 +48,7 @@ body {
   font-size: 15px;
   color: #FFFFFF; /* Color blanco */
   text-decoration: none;
+  margin-left: 10px; /* Ajusta el margen para el espaciado */
 }
 
 .search {
@@ -91,6 +92,7 @@ body {
 .nav-icons {
   display: flex;
   align-items: center;
+  margin-right: 5px;
 }
 
 .nav-icons a {
@@ -102,6 +104,21 @@ body {
 .nav-icons img {
   height: 35px;
   filter: brightness(0) invert(1); /* Cambia los íconos a blanco */
+}
+
+.nav-icons .user-info {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.nav-icons .user-info a {
+  display: flex;
+  align-items: center;
+}
+
+.nav-icons .user-info img {
+  margin-right: 5px; /* Ajusta el margen según sea necesario */
 }
 
 .badge {
@@ -118,6 +135,7 @@ body {
 .navbar-link:hover {
   color: #FF4500; /* Hover en los enlaces */
 }
+
 .navbar.hidden {
   transform: translateY(-100%);
   transition: transform 0.3s ease-in-out;
@@ -127,7 +145,6 @@ body {
   transform: translateY(0);
   transition: transform 0.3s ease-in-out;
 }
-
 
 @media (max-width: 768px) {
   .navbar {
