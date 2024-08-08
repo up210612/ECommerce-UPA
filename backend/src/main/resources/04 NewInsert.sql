@@ -116,4 +116,53 @@ INSERT INTO PRODUCTIMAGES (id_product, product_image_route) VALUES
 (20,"Images/Shirt/Male/MShirt5/MShirt5Principal.png"),
 (20,"Images/Shirt/Male/MShirt5/MShirt5_1.png"),
 (20,"Images/Shirt/Male/MShirt5/MShirt5_2.png"),
-(20,"Images/Shirt/Male/MShirt5/MShirt5_3.png")
+(20,"Images/Shirt/Male/MShirt5/MShirt5_3.png");
+
+INSERT INTO INVENTORY (id_product, size, available_quantity) VALUES
+(1, 'XS', FLOOR(1 + RAND() * 20)),
+(1, 'S', FLOOR(1 + RAND() * 20)),
+(1, 'M', FLOOR(1 + RAND() * 20)),
+(1, 'L', FLOOR(1 + RAND() * 20)),
+(1, 'XL', FLOOR(1 + RAND() * 20)),
+
+(2, 'XS', FLOOR(1 + RAND() * 20)),
+(2, 'S', FLOOR(1 + RAND() * 20)),
+(2, 'M', FLOOR(1 + RAND() * 20)),
+(2, 'L', FLOOR(1 + RAND() * 20)),
+(2, 'XL', FLOOR(1 + RAND() * 20)),
+
+(3, 'XS', FLOOR(1 + RAND() * 20)),
+(3, 'S', FLOOR(1 + RAND() * 20)),
+(3, 'M', FLOOR(1 + RAND() * 20)),
+(3, 'L', FLOOR(1 + RAND() * 20)),
+(3, 'XL', FLOOR(1 + RAND() * 20)),
+
+(4, 'XS', FLOOR(1 + RAND() * 20)),
+(4, 'S', FLOOR(1 + RAND() * 20)),
+(4, 'M', FLOOR(1 + RAND() * 20)),
+(4, 'L', FLOOR(1 + RAND() * 20)),
+(4, 'XL', FLOOR(1 + RAND() * 20)),
+
+(5, 'XS', FLOOR(1 + RAND() * 20)),
+(5, 'S', FLOOR(1 + RAND() * 20)),
+(5, 'M', FLOOR(1 + RAND() * 20)),
+(5, 'L', FLOOR(1 + RAND() * 20)),
+(5, 'XL', FLOOR(1 + RAND() * 20)),
+
+(6, 'XS', FLOOR(1 + RAND() * 20)),
+(6, 'S', FLOOR(1 + RAND() * 20)),
+(6, 'M', FLOOR(1 + RAND() * 20)),
+(6, 'L', FLOOR(1 + RAND() * 20)),
+(6, 'XL', FLOOR(1 + RAND() * 20)),
+
+(7, 'XS', FLOOR(1 + RAND() * 20)),
+(7, 'S', FLOOR(1 + RAND() * 20)),
+(7, 'M', FLOOR(1 + RAND() * 20)),
+(7, 'L', FLOOR(1 + RAND() * 20)),
+(7, 'XL', FLOOR(1 + RAND() * 20)),
+
+(8, 'XS', FLOOR(1 + RAND() * 20)),
+(8, 'S', FLOOR(1 + RAND() * 20)),
+(8, 'M', FLOOR(1 + RAND() * 20)),
+(8, 'L', FLOOR(1 + RAND() * 20)),
+(8, 'XL', FLOOR(1 + RAND() * 20));
