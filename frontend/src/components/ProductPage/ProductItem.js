@@ -2,12 +2,6 @@ import React, { useState } from 'react';
 import { Carousel } from 'react-bootstrap'; // Asegúrate de importar el archivo CSS
 import './ProductItem.css';
 const ProductItem = ({images = []}) => {
-  // URLs de imágenes de prueba
-  const imagess = [
-    'https://via.placeholder.com/800x400?text=Imagen+de+Prueba+1',
-    'https://via.placeholder.com/800x400?text=Imagen+de+Prueba+2',
-    'https://via.placeholder.com/800x400?text=Imagen+de+Prueba+3',
-  ];
 
   const [selectedIndex, setSelectedIndex] = useState(0);
 
