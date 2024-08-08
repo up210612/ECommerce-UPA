@@ -4,10 +4,14 @@ import { updateItemQuantity, removeItem, clearCart } from "../../slices/cartSlic
 import "./Cart.css";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
+import { useNavigate } from 'react-router-dom';
+
 
 export default function Cart() {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
+
+  const navigate = useNavigate();
 
   const handleQuantityChange = (idProduct, size, quantity) => {
     if (quantity >= 0) {
@@ -152,6 +156,7 @@ export default function Cart() {
                   <button
                     type="button"
                     className="btn btn-primary btn-lg btn-block"
+                    onClick={() => navigate('/checkout')}
                   >
                     Go to checkout
                   </button>
