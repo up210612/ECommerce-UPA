@@ -28,7 +28,7 @@
   }
   
   .product-details button {
-    background-color: #007bff;
+    background-color: #d74a2b;
     color: #fff;
     border: none;
     padding: 8px 12px;
@@ -38,7 +38,7 @@
   }
   
   .product-details button:hover {
-    background-color: #0056b3;
+    background-color: #ff4500;
   }
   
   .product-details select {
@@ -53,15 +53,16 @@
   }
 
   .btn-selected {
-    background-color: #ff6347; /* Color de fondo del botón seleccionado */
-    border-color: #ff6347; /* Color del borde del botón seleccionado */
+    background-color: #ff4500; /* Color de fondo del botón seleccionado */
+    border-color: #ff4500; /* Color del borde del botón seleccionado */
     color: white; /* Color del texto del botón seleccionado */
   }
   
   /* Asegúrate de que los estilos de hover no cambien el estilo de btn-selected */
   .btn-primary:hover, .btn-selected:hover {
-    background-color: #ff6347; /* Color de fondo del botón seleccionado */
-    border-color: #ff6347; /* Color del borde del botón seleccionado */
+    background-color: #ff4500; /* Color de fondo del botón seleccionado */
+    border-color: #ff4500; /* Color del borde del botón seleccionado */
     color: white; /* Color del texto del botón seleccionado */
+    
   }
   

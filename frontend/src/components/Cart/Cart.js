@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateItemQuantity, removeItem, clearCart } from "../../slices/cartSlice";
+import { useNavigate } from "react-router-dom";
 import "./Cart.css";
 import Navbar from "../Navbar/Navbar";
 import Footer from "../Footer/Footer";
@@ -8,11 +9,16 @@ import Footer from "../Footer/Footer";
 export default function Cart() {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cart.items);
+  const navigate = useNavigate();
 
   const handleQuantityChange = (idProduct, size, quantity) => {
     if (quantity >= 0) {
       dispatch(updateItemQuantity({ idProduct, size, quantity }));
     }
+  };
+
+  const handleCheckout = () => {
+    navigate('/checkout'); // Redirige a la página de checkout
   };
 
   const handleRemoveItem = (idProduct, size) => {
@@ -151,10 +157,14 @@ export default function Cart() {
 
                   <button
                     type="button"
+                    onClick={handleCheckout}
                     className="btn btn-primary btn-lg btn-block"
+                    style={{ backgroundColor: "#d74a2b", borderColor: "#d74a2b" }} // Reemplaza #yourColorCode con el código del color deseado
+
                   >
                     Go to checkout
                   </button>
+
                 </div>
               </div>
             </div>
