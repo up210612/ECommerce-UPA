@@ -5,7 +5,7 @@ import './ProductList.css';
 export default function ProductList() {
   const [products, setProducts] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 10;
+  const productsPerPage = 9;
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -42,26 +42,21 @@ export default function ProductList() {
     setCurrentPage((prevPage) => prevPage - 1);
   };
 
-  const handleProductClick = (product) => {
-     // Establece el producto seleccionado
-  };
-
   return (
     <div>
       <div className="product-grid">
         {currentProducts.map((product) => (
-          <div key={product.idProduct} onClick={() => handleProductClick(product)}>
-            <ProductItem
-              id={product.idProduct}
-              imageSrc={ "/" + product.productImageRoute}
-              altText={`Producto ${product.idProduct}`}
-              title={product.productName}
-              category={product.idCategory ? product.idCategory : 'Sin categoría'}
-              rating={product.rating}
-              attributes={product.productDescription ? product.productDescription : 'Sin descripción'}
-              price={`$${product.unitPrice}`}
-            />
-          </div>
+          <ProductItem
+            key={product.idProduct}
+            id={product.idProduct}
+            imageSrc={ "/" + product.productImageRoute}
+            altText={`Producto ${product.idProduct}`}
+            title={product.productName}
+            category={product.idCategory ? product.idCategory : 'Sin categoría'}
+            rating={product.rating}
+            attributes={product.productDescription ? product.productDescription : 'Sin descripción'}
+            price={`$${product.unitPrice}`}
+          />
         ))}
       </div>
       <div className="pagination-controls">
