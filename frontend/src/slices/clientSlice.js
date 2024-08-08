@@ -5,6 +5,7 @@ const initialState = {
   name: '',
   email: '',
   address: '',
+  isAuthentificated : false
 };
 
 const clientSlice = createSlice({
@@ -15,11 +16,13 @@ const clientSlice = createSlice({
       state.name = action.payload.name;
       state.email = action.payload.email;
       state.address = action.payload.address;
+      state.isAuthentificated = true;
     },
     clearClientInfo: (state) => {
       state.name = '';
       state.email = '';
       state.address = '';
+      state.isAuthentificated = false;
     },
   },
 });
