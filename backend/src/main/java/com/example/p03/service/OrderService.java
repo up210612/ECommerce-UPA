@@ -3,9 +3,11 @@ package com.example.p03.service;
 import org.springframework.stereotype.Service;
 
 import com.example.p03.model.Client;
+import com.example.p03.model.Inventory;
 import com.example.p03.model.Order;
 import com.example.p03.model.ShippingAddress;
 import com.example.p03.repository.ClientRepository;
+import com.example.p03.repository.InventoryRepository;
 import com.example.p03.repository.OrderRepository;
 import com.example.p03.repository.ShippingAddressRepository;
 import com.example.p03.dto.CreateFullOrderDTO;
@@ -34,8 +36,9 @@ public class OrderService {
     private final ShippingAddressMapper shippingAddressMapper;
     private final OrderDetailService orderDetailService;
     private final ClientMapper clientMapper;
+    private final InventoryRepository inventoryRepository;
 
-    public OrderService(OrderRepository orderRepository, OrderMapper orderMapper, ClientRepository clientRepository, ShippingAddressRepository shippingAddressRepository,ShippingAddressMapper shippingAddressMapper, OrderDetailService orderDetailService, ClientMapper clientMapper) {
+    public OrderService(OrderRepository orderRepository, OrderMapper orderMapper, ClientRepository clientRepository, ShippingAddressRepository shippingAddressRepository,ShippingAddressMapper shippingAddressMapper, OrderDetailService orderDetailService, ClientMapper clientMapper,InventoryRepository inventoryRepository) {
         this.orderRepository = orderRepository;
         this.orderMapper = orderMapper;
         this.clientRepository = clientRepository;
@@ -43,6 +46,7 @@ public class OrderService {
         this.shippingAddressMapper = shippingAddressMapper;
         this.orderDetailService = orderDetailService;
         this.clientMapper = clientMapper;
+        this.inventoryRepository = inventoryRepository;
     }
 
     public List<OrderDTO> getOrders(){
@@ -87,6 +91,9 @@ public class OrderService {
         List<OrderDetailsResponseDTO> listOfOrderDetails = new ArrayList<>();
         for(ItemDTO item : items){
             CreateOrderDetailDTO orderDetailDTO = new CreateOrderDetailDTO();
+            Inventory inventory = inventoryRepository.InventoryByIdSize(item.getIdProduct(),item.getSize());
+            inventory.setAvailableQuantity(inventory.getAvailableQuantity() - item.getQuantity());
+            inventoryRepository.save(inventory);
 
             orderDetailDTO.setIdOrder(orderResult.getIdOrder());
             orderDetailDTO.setIdProduct(item.getIdProduct());

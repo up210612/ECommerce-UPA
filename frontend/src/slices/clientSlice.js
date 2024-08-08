@@ -2,9 +2,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  name: '',
+  clientId : null,
+  firstName: '',
+  lastName: '',
   email: '',
   address: '',
+  isAuthentificated : false
 };
 
 const clientSlice = createSlice({
@@ -12,14 +15,20 @@ const clientSlice = createSlice({
   initialState,
   reducers: {
     setClientInfo: (state, action) => {
-      state.name = action.payload.name;
+      state.clientId = action.payload.clientId;
+      state.firstName = action.payload.firstName;
+      state.lastName = action.payload.lastName;
       state.email = action.payload.email;
       state.address = action.payload.address;
+      state.isAuthentificated = true;
     },
     clearClientInfo: (state) => {
-      state.name = '';
+      state.clientId = null;
+      state.firstName = '';
+      state.lastName = '';
       state.email = '';
       state.address = '';
+      state.isAuthentificated = false;
     },
   },
 });

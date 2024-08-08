@@ -7,12 +7,13 @@ import clientReducer from './slices/clientSlice';
 import checkoutReducer from './slices/checkoutSlice';
 
 const persistedCartReducer = persistReducer(persistConfig, cartReducer);
+const persistedClientReducer = persistReducer(persistConfig, clientReducer);
 
 const store = configureStore({
   reducer: {
     product: productReducer,
     cart: persistedCartReducer,
-    client: clientReducer,
+    client: persistedClientReducer,
     checkout: checkoutReducer,
   }
 });
