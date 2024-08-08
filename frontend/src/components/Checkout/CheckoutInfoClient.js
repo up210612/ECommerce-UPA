@@ -1,13 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { clearCart } from "../../slices/cartSlice";
-import { useNavigate } from 'react-router-dom';
 
 export default function CheckoutInfoCliente() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const cartItems = useSelector((state) => state.cart.items);
+    const clientData = useSelector((state) => state.client);
+    const isAuthenticated = useSelector((state) => state.client.isAuthentificated);
 
     const [postalCode, setPostalCode] = useState("");
     const [isPostalCodeValid, setIsPostalCodeValid] = useState(true);
@@ -109,7 +110,7 @@ export default function CheckoutInfoCliente() {
         if (isPostalCodeValid && isCardNumberValid && paymentInfo.cardType && isCardCVVValid && isCardExpiryValid) {
             // Lógica para completar el pedido
             const orderData = {
-                idClient: 1,
+                idClient: clientData.clientId,
                 address: address,
                 items: cartItems.map(item => ({
                     idProduct: item.idProduct,
@@ -176,11 +177,20 @@ export default function CheckoutInfoCliente() {
         });
     };
 
+    if (!isAuthenticated) {
+        return (
+            <div className="container">
+                <h3>Debes iniciar sesión para continuar</h3>
+                <Link style={{ backgroundColor: "#d74a2b", borderColor: "#d74a2b" }} className="btn btn-primary" to="/login">Iniciar sesión</Link>
+            </div>
+        );
+    }
+
     if (cartItems.length === 0) {
         return (
             <div className="container">
                 <h3>Tu carrito está vacío</h3>
-                <Link className="btn btn-primary" to="/">Ir a la tienda</Link>
+                <Link style={{ backgroundColor: "#d74a2b", borderColor: "#d74a2b" }} className="btn btn-primary" to="/">Ir a la tienda</Link>
             </div>
         );
     }
@@ -191,18 +201,18 @@ export default function CheckoutInfoCliente() {
                 <h3>Información Cliente</h3>
                 <div className="mb-3">
                     <label className="form-label">Correo</label>
-                    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required />
+                    <input type="email" value={clientData.email} className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" disabled/>
                 </div>
                 <hr className="border-2"></hr>
                 <h3>Dirección de envío</h3>
                 <div className="row mb-3">
                     <div className="col">
                         <label className="form-label">Primer nombre</label>
-                        <input type="text" className="form-control" aria-label="First name" required />
+                        <input value={clientData.firstName} type="text" className="form-control" aria-label="First name" disabled />
                     </div>
                     <div className="col">
                         <label className="form-label">Apellidos</label>
-                        <input type="text" className="form-control" aria-label="Last name" required />
+                        <input value={clientData.lastName} type="text" className="form-control" aria-label="Last name" disabled />
                     </div>
                 </div>
                 <div className="row mb-3">
@@ -353,7 +363,7 @@ export default function CheckoutInfoCliente() {
                 <hr className="border-2"></hr>
                 <div className="d-flex justify-content-between mb-5">
                     <Link className="text-decoration-none text-secondary" to="/cart">{"<"} Regresar al carrito</Link>
-                    <button type="submit" className="btn btn-primary">Completar el pedido</button>
+                    <button style={{ backgroundColor: "#d74a2b", borderColor: "#d74a2b" }} type="submit" className="btn btn-primary">Completar el pedido</button>
                 </div>
             </form>
         </div>

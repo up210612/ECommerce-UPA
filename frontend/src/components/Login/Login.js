@@ -57,9 +57,11 @@ export default function Login() {
         const result = await response.json();
         dispatch(
           setClientInfo({
-            name: result.name,
+            clientId: result.idClient,
+            firstName: result.firstName,
+            lastName: result.lastName,
             email: result.email,
-            address: result.address,
+            address: result.celular,
           })
         );
       } else {
@@ -90,12 +92,14 @@ export default function Login() {
               <button
                 onClick={() => navigate("/")}
                 className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm form-control"
+                style={{ backgroundColor: "#d74a2b", borderColor: "#d74a2b" }}
               >
                 Comprar productos
               </button>
               <button
                 onClick={handleLogout}
                 className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm form-control"
+                style={{ backgroundColor: "#d74a2b", borderColor: "#d74a2b" }}
               >
                 Cerrar sesión
               </button>
@@ -143,6 +147,7 @@ export default function Login() {
                 <button
                   type="submit"
                   className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm form-control"
+                  style={{ backgroundColor: "#d74a2b", borderColor: "#d74a2b" }}
                 >
                   Iniciar sesión
                 </button>

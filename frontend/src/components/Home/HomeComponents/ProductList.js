@@ -52,9 +52,7 @@ export default function ProductList() {
             imageSrc={ "/" + product.productImageRoute}
             altText={`Producto ${product.idProduct}`}
             title={product.productName}
-            category={product.idCategory ? product.idCategory : 'Sin categoría'}
             rating={product.rating}
-            attributes={product.productDescription ? product.productDescription : 'Sin descripción'}
             price={`$${product.unitPrice}`}
           />
         ))}

@@ -80,7 +80,9 @@ const SignIn = () => {
         if (response.ok) {
           const result = await response.json();
           dispatch(setClientInfo({
-            name: `${result.firstName} ${result.lastName}`,
+            clientId: result.idClient,
+            firstName: result.firstName,
+            lastName: result.lastName,
             email: result.email,
             address: result.celular,
           }));
@@ -205,7 +207,7 @@ const SignIn = () => {
               )}
             </div>
           </div>
-          <button type="submit" className="btn btn-primary">Iniciar Sesión</button>
+          <button style={{ backgroundColor: "#d74a2b", borderColor: "#d74a2b" }} type="submit" className="btn btn-primary">Iniciar Sesión</button>
         </form>
       </div>
     </>
