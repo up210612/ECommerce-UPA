@@ -3,26 +3,35 @@ version: '3'
 services:
 
   frontend:
+
     build: frontend
+
     ports:
+
       - 3000:3000
+
     volumes:
       - ./frontend/src:/app/src
 
   backend:
+
     build: backend
+
     ports:
+
       - 8080:8080
+
     depends_on:
       - db
 
   db:
-    build: db
+    build: db/mysql-init
     ports:
       - 3306:3306
     volumes:
-      - ./db/:/docker-entrypoint-initdb
+      - ./db/mysql-init:/docker-entrypoint-initdb
       - mysql-data:/var/lib/mysql
 
 volumes:
-  mysql-data: {}
+  mysql-data:
+    
