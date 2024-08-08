@@ -1,6 +1,9 @@
+import './Banner.css';
 export default function Carrousell() {
   return (
-    <div id="carouselExampleIndicators" className="carousel slide">
+    
+    <div>
+      <div id="carouselExampleIndicators" className="carousel slide">
       <div className="carousel-indicators">
         <button
           type="button"
@@ -21,6 +24,12 @@ export default function Carrousell() {
           data-bs-target="#carouselExampleIndicators"
           data-bs-slide-to="2"
           aria-label="Slide 3"
+        ></button>
+        <button
+          type="button"
+          data-bs-target="#carouselExampleIndicators"
+          data-bs-slide-to="3"
+          aria-label="Slide 4"
         ></button>
       </div>
       <div className="carousel-inner">
@@ -48,6 +57,14 @@ export default function Carrousell() {
             style={{ width: '1450px', height: '550px', objectFit: 'cover' }}
           />
         </div>
+        <div className="carousel-item">
+          <img
+            src=".\Images\Banners\pic4.png"
+            alt="Oferta imagen 3"
+            className="d-block w-100"
+            style={{ width: '1450px', height: '550px', objectFit: 'cover' }}
+          />
+        </div>
       </div>
       <button
         className="carousel-control-prev"
@@ -67,6 +84,16 @@ export default function Carrousell() {
         <span className="carousel-control-next-icon" aria-hidden="true"></span>
         <span className="visually-hidden">Next</span>
       </button>
+    </div>
+    <div className="moving-banner">
+      <div className="moving-banner-content">
+        <span>NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp;  </span>
+        <span>NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp;   </span>
+        <span>NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp;   </span>
+        <span>NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp;   </span>
+        <span>NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp; NUEVAS OFERTAS &nbsp;   </span>
+      </div>
+    </div>
     </div>
   );
 }

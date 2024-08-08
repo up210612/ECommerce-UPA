@@ -1,52 +1,67 @@
-/* Footer.css */
 
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+body {
+  font-family: 'Arimo', sans-serif;
+}
+
+
+/* Estilos para el Footer */
 .footer {
-    background-color: #f8f9fa;
-    padding: 20px 0;
-    border-top: 1px solid #e7e7e7;
-    margin-top: 3rem;
-  }
-  
-  .footer-container {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-  }
-  
-  .footer-section {
-    flex: 1;
-    margin: 0 10px;
-  }
-  
-  .footer-section h4 {
-    margin-bottom: 15px;
-    font-size: 18px;
-    color: #343a40;
-  }
-  
-  .footer-section p, .footer-section ul, .footer-section li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    color: #6c757d;
-  }
-  
-  .footer-section ul {
-    padding-left: 0;
-  }
-  
-  .footer-section li {
-    margin-bottom: 10px;
-  }
-  
-  .footer-section a {
-    color: #007bff;
-    text-decoration: none;
-  }
-  
-  .footer-section a:hover {
-    text-decoration: underline;
-  }
-  
+  background-color: #333333; /* Fondo #333333 */
+  padding: 20px 0;
+  border-top: 1px solid #e7e7e7;
+  margin-top: 3rem;
+  font-family: 'Arimo', sans-serif; /* Fuente Arimo */
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-section {
+  flex: 1;
+  margin: 0 10px;
+  font-family: 'Arimo', sans-serif; 
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.footer-section h4 {
+  font-family: 'Arimo', sans-serif; 
+  font-size: 10px;
+  margin-bottom: 15px;
+  font-size: 18px;
+  color: #ffffff; /* Texto blanco */
+  font-weight: 1000; 
+  letter-spacing: 0.2em;
+}
+
+.footer-section p, .footer-section ul, .footer-section li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #FFFFFF; /* Texto blanco */
+}
+
+.footer-section ul {
+  padding-left: 0;
+}
+
+.footer-section li {
+  margin-bottom: 10px;
+}
+
+.footer-section a {
+  color: #FFFFFF; /* Texto blanco */
+  text-decoration: none;
+}
+
+.footer-section a:hover {
+  color: #FF4500; /* Hover en los enlaces */
+  text-decoration: underline;
+}
