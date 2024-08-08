@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Arimo:wght@700&display=swap');
 
 body {
   font-family: 'Arimo', sans-serif;
@@ -20,6 +20,7 @@ body {
   flex-direction: column; 
   margin-right: 15px;
   margin-top: 2px;
+  margin-left: 5px;
 }
 
 .logo img.large-icon {
@@ -34,10 +35,12 @@ body {
 
 .logo .navbar-brand {
   font-family: 'Arimo', sans-serif; 
-  font-size: 10px; 
+  font-size: 15px; /* Incrementa el tamaño de la fuente */
   color: #ffffff; /* Color del texto del logo */
-  font-weight: 1000; 
-  letter-spacing: 0.8em; 
+  font-weight: 900; /* Aumenta el ancho del texto */
+  letter-spacing: 0.3em; /* Ajusta el espaciado entre letras */
+  line-height: 1; /* Remueve el espacio entre líneas */
+
 }
 
 .text-special {
@@ -115,6 +118,16 @@ body {
 .navbar-link:hover {
   color: #FF4500; /* Hover en los enlaces */
 }
+.navbar.hidden {
+  transform: translateY(-100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar.visible {
+  transform: translateY(0);
+  transition: transform 0.3s ease-in-out;
+}
+
 
 @media (max-width: 768px) {
   .navbar {
