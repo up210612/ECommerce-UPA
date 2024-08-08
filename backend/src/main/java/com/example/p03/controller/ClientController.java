@@ -27,6 +27,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.p03.dto.ClientDTO;
 import com.example.p03.dto.CreateClientDTO;
 import com.example.p03.dto.GetClientDTO;
+import com.example.p03.dto.LogInDTO;
+import com.example.p03.exception.ExcepcionRecursoNoEncontrado;
 
 
 @Tag(name = "Endpoints de clientes", description = "Lectura y altas de clientes")
@@ -55,5 +57,22 @@ public class ClientController {
     @ResponseStatus(HttpStatus.CREATED)
     public ClientDTO saveClient(@Valid @RequestBody CreateClientDTO data) {
         return ClientService.saveClientDTO(data);
+    }
+
+    @Operation(summary = "inicio de sesión")
+    @PostMapping("/login")
+    public ResponseEntity<Object> login(@Valid @RequestBody LogInDTO data) {
+        try {
+            ClientDTO clientDTO = ClientService.authenticateClient(data.getEmail(), data.getPassword());
+            return ResponseEntity.ok(clientDTO);
+        } catch (ExcepcionRecursoNoEncontrado e) {
+            if (e.getMessage().contains("El cliente no fue encontrado")) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+            } else if (e.getMessage().contains("Contraseña incorrecta")) {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
+            } else {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error desconocido");
+            }
+        }
     }
 }

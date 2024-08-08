@@ -81,5 +81,18 @@ public class ClientService {
         ClientRepository.save(updatedClient);
     }
 
+    public ClientDTO authenticateClient(String email, String password) throws ExcepcionRecursoNoEncontrado {
+        Optional<Client> optionalClient = ClientRepository.findByEmail(email);
+        if (optionalClient.isPresent()) {
+            Client client = optionalClient.get();
+            if (client.getPassword().equals(password)) {
+                return ClientMapper.toDTO(client);
+            } else {
+                throw new ExcepcionRecursoNoEncontrado("Contraseña incorrecta");
+            }
+        } else {
+            throw new ExcepcionRecursoNoEncontrado("El cliente no fue encontrado con el email: " + email);
+        }
+    }
     
 }
