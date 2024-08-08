@@ -1,46 +1,37 @@
-#Version minima para trabajar con docker
-version: "3.8"
+version: '3'
 
-#servicios que va a contener 
 services:
 
-  #frontend contenedor
-  app:
-    #construir la imagen de esta carpeta.
-    build: ./frontend
+  frontend:
 
-    #Asignacion de puertos (izquierda host, derecha contenedor)
+    build: frontend
+
     ports:
-      - 80:5173
 
-    #Definimos que va a sincronizar del host en el contenedor (izquierda host, derecha contenedor)
+      - 3000:3000
+
     volumes:
       - ./frontend/src:/app/src
-    
-    #Definir variable de entorno
-    environment:
-      VITE_API_URL: http://64.227.96.240:3000
 
-  #backend contenedor    
-  api:
-    build: ./backend
+  backend:
+
+    build: backend
+
     ports:
-      - 3000:3000
-    environment:
-      DB_URL: mongodb://db/gamify
-    volumes:
-      - ./backend/app:/app/app
+
+      - 8080:8080
+
     depends_on:
       - db
- 
 
-  #contenedor de base de datos  
-  #db:
-  #  image: mongo:5.0.19-focal
-  #  ports:
-  #    - 27017:27017
-  #  volumes:
-  #    - gamify:/data/db
+  db:
+    build: db/mysql-init
+    ports:
+      - 3306:3306
+    volumes:
+      - ./db/mysql-init:/docker-entrypoint-initdb
+      - mysql-data:/var/lib/mysql
 
 volumes:
-  gamify:
+  mysql-data:
+    
