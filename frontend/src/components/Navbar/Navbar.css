@@ -59,6 +59,7 @@ body {
   margin: 0 auto;
   border-radius: 8px 0 0 8px;
   margin-top: 20px;
+  position: relative;
 }
 
 .search input {
@@ -87,6 +88,32 @@ body {
 .search button img {
   height: 24px;
   filter: brightness(0) invert(1); /* Cambia el icono a blanco */
+}
+
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  z-index: 1000;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.search-result-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.search-result-item.highlighted,
+.search-result-item:hover {
+  background-color: #d74a2b; 
+  border-color: #d74a2b;
+  color: white;
 }
 
 .nav-icons {
