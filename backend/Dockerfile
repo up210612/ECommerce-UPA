@@ -3,6 +3,6 @@ FROM openjdk:17-jdk-alpine3.14
 RUN addgroup backend && adduser -S -G backend backend
 USER backend
 WORKDIR /app
-COPY e-comerce-0.0.1-SNAPSHOT.jar .
+COPY p03-0.0.1-SNAPSHOT.jar .
 ENTRYPOINT ["java","-jar","/app/p03-0.0.1-SNAPSHOT.jar"]
-EXPOSE 8080
+EXPOSE 8080

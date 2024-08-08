@@ -5,4 +5,4 @@ WORKDIR /app/
 COPY --chown=front package*.json .
 RUN npm install
 COPY --chown=front . .
-CMD ["npm", "run", "start"]
+CMD ["npm", "run", "start"]

@@ -9,3 +9,11 @@
   background: linear-gradient(to right, rgb(255, 255, 255), rgb(255, 255, 255))
   }
 
+  .custom-checkout-button {
+    background-color: #d74a2b;; /* Reemplaza #yourColorCode con el código del color deseado */
+    border-color: #d74a2b;; /* Opcional, si también quieres cambiar el borde */
+  }
+  
+  .custom-checkout-button:hover {
+    background-color: #d74a2b;; /* Reemplaza #yourHoverColorCode con el color deseado para el hover */
+  }
