@@ -8,6 +8,8 @@ import org.mapstruct.NullValuePropertyMappingStrategy;
 import com.example.p03.model.Client;
 import com.example.p03.dto.ClientDTO;
 import com.example.p03.dto.CreateClientDTO;
+import com.example.p03.dto.GetClientDTO;
+
 import java.util.List;
 import java.util.*;
 
@@ -18,8 +20,10 @@ import java.util.*;
 )
 public interface ClientMapper {
 
-  @Mapping(target = "password", ignore = true)
     ClientDTO toDTO (Client model);
+
+  
+    GetClientDTO toClientDTO(Client model);
 
     List<ClientDTO> toDTO(List<Client> model);
 

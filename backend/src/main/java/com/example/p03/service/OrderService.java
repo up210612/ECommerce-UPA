@@ -16,6 +16,7 @@ import com.example.p03.dto.ItemDTO;
 import com.example.p03.dto.OrderDTO;
 import com.example.p03.dto.OrderDetailsResponseDTO;
 import com.example.p03.exception.ExcepcionRecursoNoEncontrado;
+import com.example.p03.mapper.ClientMapper;
 import com.example.p03.mapper.OrderMapper;
 import com.example.p03.mapper.ShippingAddressMapper;
 
@@ -32,14 +33,16 @@ public class OrderService {
     private final ShippingAddressRepository shippingAddressRepository;
     private final ShippingAddressMapper shippingAddressMapper;
     private final OrderDetailService orderDetailService;
+    private final ClientMapper clientMapper;
 
-    public OrderService(OrderRepository orderRepository, OrderMapper orderMapper, ClientRepository clientRepository, ShippingAddressRepository shippingAddressRepository,ShippingAddressMapper shippingAddressMapper, OrderDetailService orderDetailService) {
+    public OrderService(OrderRepository orderRepository, OrderMapper orderMapper, ClientRepository clientRepository, ShippingAddressRepository shippingAddressRepository,ShippingAddressMapper shippingAddressMapper, OrderDetailService orderDetailService, ClientMapper clientMapper) {
         this.orderRepository = orderRepository;
         this.orderMapper = orderMapper;
         this.clientRepository = clientRepository;
         this.shippingAddressRepository = shippingAddressRepository;
         this.shippingAddressMapper = shippingAddressMapper;
         this.orderDetailService = orderDetailService;
+        this.clientMapper = clientMapper;
     }
 
     public List<OrderDTO> getOrders(){
@@ -99,6 +102,7 @@ public class OrderService {
         fullOrder.setOrder(orderMapper.toResponseDTO(orderResult));
         fullOrder.setAddress(addressResult);
         fullOrder.setItems(listOfOrderDetails);
+        fullOrder.setClient(clientMapper.toClientDTO(client.get()));
 
         return fullOrder;
     }

@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.p03.dto.ClientDTO;
 import com.example.p03.dto.CreateClientDTO;
+import com.example.p03.dto.GetClientDTO;
 
 
 @Tag(name = "Endpoints de clientes", description = "Lectura y altas de clientes")
@@ -41,6 +42,12 @@ public class ClientController {
     @GetMapping({ "/all" })
     public ResponseEntity<List<Client>> getClients() {
         return ResponseEntity.ok(ClientService.getClients());
+    }
+
+    @Operation(summary =  "Obtener todos los clientes")
+    @GetMapping({ "/allDTO" })
+    public ResponseEntity<List<GetClientDTO>> getClientsDTO() {
+        return ResponseEntity.ok(ClientService.getClientsDTO());
     }
 
     @Operation(summary = "guardar cliente")

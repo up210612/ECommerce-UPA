@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.p03.dto.ClientDTO;
 import com.example.p03.dto.CreateClientDTO;
+import com.example.p03.dto.GetClientDTO;
 import com.example.p03.model.Client;
 import com.example.p03.mapper.ClientMapper;
 import com.example.p03.repository.ClientRepository;
@@ -15,6 +16,7 @@ import jakarta.validation.Valid;
 import com.example.p03.exception.ExcepcionRecursoNoEncontrado;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ClientService {
@@ -30,12 +32,26 @@ public class ClientService {
         return ClientRepository.findAll();
     }
 
+    public List<GetClientDTO> getClientsDTO() {
+        return ClientRepository.findAll().stream()
+        .map(ClientMapper::toClientDTO)
+        .collect(Collectors.toList());
+    }
+
     public Client getClient(Long id) throws ExcepcionRecursoNoEncontrado {
         Optional<Client> optionalClient = ClientRepository.findById(id);
         if(optionalClient.isPresent() == false){
             throw new ExcepcionRecursoNoEncontrado("The product was not found: " + id);
         }
         return optionalClient.get();
+    }
+
+    public GetClientDTO getClientDTO(Long id) throws ExcepcionRecursoNoEncontrado {
+        Optional<Client> optionalClient = ClientRepository.findById(id);
+        if(optionalClient.isPresent() == false){
+            throw new ExcepcionRecursoNoEncontrado("The product was not found: " + id);
+        }
+        return ClientMapper.toClientDTO(optionalClient.get());
     }
 
     public Client saveClient(@Valid Client product) {

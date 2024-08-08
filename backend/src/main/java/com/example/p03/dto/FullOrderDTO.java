@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 public class FullOrderDTO {
-    private Client client;
+    private GetClientDTO client;
     private OrderDTO order;
     private ShippingAddress address;
     private List<OrderDetailsResponseDTO> items;
