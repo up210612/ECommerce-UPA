@@ -4,5 +4,5 @@ RUN addgroup backend && adduser -S -G backend backend
 USER backend
 WORKDIR /app
 COPY e-comerce-0.0.1-SNAPSHOT.jar .
-ENTRYPOINT ["java","-jar","/app/e-comerce-0.0.1-SNAPSHOT.jar"]
-EXPOSE 8080
+ENTRYPOINT ["java","-jar","/app/p03-0.0.1-SNAPSHOT.jar"]
+EXPOSE 8080
