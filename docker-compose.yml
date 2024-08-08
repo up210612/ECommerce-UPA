@@ -28,6 +28,10 @@ services:
     build: db/mysql-init
     ports:
       - 3306:3306
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: ecommerce  # Opcional: nombre de la base de datos que deseas crear
+    MYSQL_USER: root # Opcional: nombre de un usuario adicional
+    MYSQL_PASSWORD: root
     volumes:
       - ./db/mysql-init:/docker-entrypoint-initdb
       - mysql-data:/var/lib/mysql
