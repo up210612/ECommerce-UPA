@@ -9,7 +9,7 @@ import ScrollToTopButton from "./ScrollButton";
 
 export default function Navbar() {
   const location = useLocation();
-  const isLoginPage = location.pathname === "/login";
+  const isLoginPage = location.pathname === "/login" || location.pathname === "/signin";
   const cartItems = useSelector((state) => state.cart.items);
   const { user } = useUser();
 

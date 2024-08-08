@@ -4,6 +4,7 @@ import Home from '../Home/Home';
 import ProductPage from '../ProductPage/ProductPage';
 import Cart from '../Cart/Cart';
 import Login from '../Login/Login';
+import SignIn from '../Login/SignIn';
 import { useState } from 'react';
 import { UserProvider } from '../Login/UserContext'; 
 import CheckoutSuccessfull from '../Checkout/CheckoutSuccessfull';
@@ -19,6 +20,7 @@ const Main = () => {
           <Route path="/productPage/:id" element={<ProductPage />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/signin" element={<SignIn />} />
           <Route path="/" element={<Home />} />
           <Route path="*" element={<Navigate to="/" />} />
           <Route path="/confirmedOrder" element={<CheckoutSuccessfull />} />
