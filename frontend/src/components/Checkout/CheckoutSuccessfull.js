@@ -5,7 +5,7 @@ import Footer from "../Footer/Footer";
 export default function CheckoutSuccessfull() {
     const location = useLocation();
     const { paymentInfo, result } = location.state || {};
-    const shippingAddress = `${result.address.country}, ${result.address.countryState}, ${result.address.street}, ${result.address.streetNumber}, ${result.address.apartment == null ? "": "result.address.apartment, "} ${result.address.zipcode}`;
+    const shippingAddress = `${result.address.countryState}, ${result.address.country}, ${result.address.street}, ${"#"+result.address.streetNumber}, ${result.address.apartment == null ? "": "Apt. " + result.address.apartment+", " } ${"C.P. " + result.address.zipcode}`;
     const customerName = result.client.firstName + " " + result.client.lastName;
     return (
         <>
@@ -33,7 +33,7 @@ export default function CheckoutSuccessfull() {
                     <div className="mt-4">
                         <h5>Método de pago</h5>
                         <p>
-                            Termina en {paymentInfo.cardNumber.slice(-4)} — ${result.order.totalAmount}
+                            Termina en --{paymentInfo.cardNumber.slice(-4)} — ${result.order.totalAmount}
                         </p>
                     </div>
                 </div>
