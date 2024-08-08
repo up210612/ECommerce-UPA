@@ -27,6 +27,7 @@ export default function CheckoutInfoCliente() {
     const [address, setAddress] = useState({
         street: "",
         streetNumber: "",
+        apartment : "",
         country: "",
         countryState: "",
         zipcode: ""
@@ -214,7 +215,7 @@ export default function CheckoutInfoCliente() {
                     </div>
                     <div className="col-3">
                         <label className="form-label">Apartamento</label>
-                        <input type="text" className="form-control" placeholder="(Opcional)" aria-label="Last name" />
+                        <input name="apartment" onChange={onChangeAddress} type="text" className="form-control" placeholder="(Opcional)" aria-label="Last name" />
                     </div>
                 </div>
                 <div className="row mb-3">
