@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { setClientInfo, clearClientInfo } from '../../slices/clientSlice';
@@ -9,31 +9,43 @@ import './Login.css';
 export default function Login() {
   const location = useLocation();
   const isLoginPage = location.pathname === '/login';
-  const [email, setemail] = useState('');
+  const [email, setEmail] = useState('');
   const [contraseña, setContraseña] = useState('');
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.client.isAuthentificated);
+
+  useEffect(() => {
+    if (isAuthenticated && !isLoginPage) {
+      navigate('/');
+    }
+  }, [isAuthenticated, navigate, isLoginPage]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (email === '' || contraseña === '') {
+      setErrorMessage('Todos los campos son obligatorios');
       setError(true);
+      setTimeout(() => setError(false), 2000);
       return;
     }
 
     setError(false);
 
-    // Simulación de autenticación
+    loginClient(email, contraseña);
+  };
+
+  const loginClient = async (email, contraseña) => {
     const clientData = {
       email: email,
       password: contraseña,
     };
 
     try {
-      const response = await fetch('http://localhost:8080/clients/saveClient', {
+      const response = await fetch('http://localhost:8080/clients/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -50,12 +62,16 @@ export default function Login() {
             address: result.address,
           })
         );
-        navigate('/');
       } else {
-        console.error('Error al guardar el cliente');
+        const errorData = await response.json();
+        setErrorMessage(errorData.message || 'Error al iniciar sesión');
+        setError(true);
+        setTimeout(() => setError(false), 2000);
       }
     } catch (error) {
-      console.error('Error al conectar con el servidor', error);
+      setErrorMessage('Error al conectar con el servidor');
+      setError(true);
+      setTimeout(() => setError(false), 2000);
     }
   };
 
@@ -63,14 +79,20 @@ export default function Login() {
     dispatch(clearClientInfo());
   };
 
-  if (isAuthenticated) {
-    return (
-      <div>
-        <Navbar />
-        <div className="login-container">
+  return (
+    <div>
+      <Navbar />
+      <div className={`login-container ${isLoginPage ? 'login-page' : ''}`}>
+        {isAuthenticated ? (
           <div className="login">
             <div className="login-form">
               <h2 className="display-4">Ya has iniciado sesión</h2>
+              <button
+                onClick={() => navigate("/")}
+                className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm form-control"
+              >
+                Comprar productos
+              </button>
               <button
                 onClick={handleLogout}
                 className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm form-control"
@@ -79,67 +101,59 @@ export default function Login() {
               </button>
             </div>
           </div>
-        </div>
-        <Footer />
-      </div>
-    );
-  }
-
-  return (
-    <div>
-      <Navbar />
-      <div className={`login-container ${isLoginPage ? 'login-page' : ''}`}>
-        <div className="login">
-          <div className="login-form">
-            <h2 className="display-4">Login</h2>
-            <form onSubmit={handleSubmit}>
-              <div className="form-group mb-3">
-                <input
-                  id="inputEmail"
-                  type="email"
-                  placeholder="email de usuario"
-                  required
-                  className="form-control rounded-pill border-0 shadow-sm px-4"
-                  value={email}
-                  onChange={(e) => setemail(e.target.value)}
-                />
+        ) : (
+          <div className="login">
+            <div className="login-form">
+              <h2 className="display-4">Login</h2>
+              <form onSubmit={handleSubmit}>
+                <div className="form-group mb-3">
+                  <input
+                    id="inputEmail"
+                    type="email"
+                    placeholder="Email de usuario"
+                    required
+                    className="form-control rounded-pill border-0 shadow-sm px-4"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  />
+                </div>
+                <div className="form-group mb-3">
+                  <input
+                    id="inputPassword"
+                    type="password"
+                    placeholder="Contraseña"
+                    required
+                    className="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
+                    value={contraseña}
+                    onChange={(e) => setContraseña(e.target.value)}
+                  />
+                </div>
+                <div className="custom-control custom-checkbox mb-3 text-center">
+                  <input
+                    id="customCheck1"
+                    type="checkbox"
+                    className="custom-control-input"
+                  />
+                  <label htmlFor="customCheck1" className="custom-control-label text-center">
+                    Recordar contraseña
+                  </label>
+                  <p>¿No tienes una cuenta?</p>
+                  <p><Link to="/signin">Crea una</Link></p>
+                </div>
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm form-control"
+                >
+                  Iniciar sesión
+                </button>
+              </form>
+              {error && <p className="text-danger text-center">{errorMessage}</p>}
+              <div className="text-center mt-3">
+                <small className="text-muted">al tiro con el gato</small>
               </div>
-              <div className="form-group mb-3">
-                <input
-                  id="inputPassword"
-                  type="password"
-                  placeholder="Contraseña"
-                  required
-                  className="form-control rounded-pill border-0 shadow-sm px-4 text-primary"
-                  value={contraseña}
-                  onChange={(e) => setContraseña(e.target.value)}
-                />
-              </div>
-              <div className="custom-control custom-checkbox mb-3 text-center">
-                <input
-                  id="customCheck1"
-                  type="checkbox"
-                  className="custom-control-input"
-                />
-                <label htmlFor="customCheck1" className="custom-control-label text-center">
-                  Recordar contraseña
-                </label>
-                <p>¿No tienes una cuenta?</p>
-                <p><Link to={"/signin"}>Crea una</Link></p>
-              </div>
-              <button
-                type="submit"
-                className="btn btn-primary btn-block text-uppercase mb-2 rounded-pill shadow-sm form-control"
-              >
-                Iniciar sesión
-              </button>
-            </form>
-            {error && <p className="text-danger text-center">Todos los campos son obligatorios</p>}
-            <div className="text-center mt-3">
-              <small className="text-muted">al tiro con el gato</small>
             </div>
           </div>
-        </div>
+        )}
       </div>
       <Footer />
     </div>
