@@ -113,6 +113,7 @@ export default function CheckoutInfoCliente() {
                 address: address,
                 items: cartItems.map(item => ({
                     idProduct: item.idProduct,
+                    size : item.size,
                     unitPrice: item.unitPrice,
                     quantity: item.quantity
                 })),
