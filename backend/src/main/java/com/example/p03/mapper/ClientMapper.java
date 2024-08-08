@@ -18,6 +18,7 @@ import java.util.*;
 )
 public interface ClientMapper {
 
+  @Mapping(target = "password", ignore = true)
     ClientDTO toDTO (Client model);
 
     List<ClientDTO> toDTO(List<Client> model);

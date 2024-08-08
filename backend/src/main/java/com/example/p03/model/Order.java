@@ -38,6 +38,4 @@ public class Order {
 
     private Double totalAmount;
 
-    @OneToMany(mappedBy = "order")
-    private Set<OrderDetails> orderDetails;
 }
