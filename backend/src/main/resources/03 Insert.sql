@@ -1,15 +1,17 @@
 use ECOMMERCE;
 
-INSERT INTO clients (id_client, last_name, first_name, celular) VALUES
-(1, 'Davolio', 'Nancy', '4491234567'),
-(2, 'Fuller', 'Andrew', ''),
-(3, 'Leverling', 'Janet', ''),
-(4, 'Peacock', 'Margaret', ''),
-(5, 'Buchanan', 'Steven', ''),
-(6, 'Suyama', 'Michael', ''),
-(7, 'King', 'Robert', ''),
-(8, 'Callahan', 'Laura', ''),
-(9, 'Dodsworth', 'Anne', '');
+INSERT INTO clients (id_client, last_name, first_name, celular, password) VALUES
+(1, 'Martinez', 'Luis', '5524052431', 'k+m$6a4=ITnegcA'),
+(2, 'Martinez', 'Marta', '5529542373', '#dr#YGFk%n=QD9'),
+(3, 'Perez', 'Lucia', '5527140177', 'AWKZEZ#6pU=veX9Sg'),
+(4, 'Ramirez', 'Ana', '5579030425', 'MJwpYw0$hvJ5dK07&K'),
+(5, 'Gonzalez', 'Carlos', '5553839879', 'IpLIrd5IT#D1'),
+(6, 'Gonzalez', 'Antonio', '5547630756', 'vo6ZAHX+'),
+(7, 'Gonzalez', 'Maria', '5588918643', 'i4=2A4WC3N23'),
+(8, 'Ramirez', 'Lucia', '5549582027', 'Drt=GTvv2@CsB'),
+(9, 'Sanchez', 'Marta', '5527544209', 'lV9aXQ&l$'),
+(10, 'Perez', 'Laura', '5591389872', '0=iLm8i+9lauoaKNAl3');
+
 
 
 INSERT INTO orders (id_order, id_client, order_date) VALUES

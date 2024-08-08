@@ -55,7 +55,7 @@ const ProductDetails = ({ product = {} }) => {
       <div>
         <h4>Selecciona la Cantidad:</h4>
         <input
-          className='form-select'
+          className='form'
           type="number"
           min="1"
           value={quantity}
@@ -64,7 +64,7 @@ const ProductDetails = ({ product = {} }) => {
       </div>
 
       <div className="mt-3 d-grid gap-2 mx-auto">
-        <button className="btn btn-primary" type="button" disabled={!selectedSize} onClick={handleAddToCart}>
+        <button className="btn-primary" type="button" disabled={!selectedSize} onClick={handleAddToCart}>
           Agregar al carrito
         </button>
       </div>
