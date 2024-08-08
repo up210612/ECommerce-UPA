@@ -5,6 +5,7 @@ import Navbar from "../Navbar/Navbar";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUser } from "./UserContext";
+import Footer from "../Footer/Footer";
 
 export default function Login() {
   const location = useLocation();
@@ -82,6 +83,7 @@ export default function Login() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
