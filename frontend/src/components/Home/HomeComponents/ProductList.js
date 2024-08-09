@@ -10,7 +10,7 @@ export default function ProductList() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch('http://localhost:8080/products/getProductsHome');
+        const response = await fetch('http://165.232.129.33:8080/products/getProductsHome');
         const data = await response.json();
         const productsWithRating = data.map(product => ({
           ...product,

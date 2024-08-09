@@ -69,7 +69,7 @@ const SignIn = () => {
       };
 
       try {
-        const response = await fetch('http://localhost:8080/clients/saveClient', {
+        const response = await fetch('http://165.232.129.33:8080/clients/saveClient', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
