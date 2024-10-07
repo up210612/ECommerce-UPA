@@ -122,7 +122,7 @@ export default function CheckoutInfoCliente() {
             };
 
             try {
-                const response = await fetch('http://165.232.129.33:8080/orders/addFullOrder', {
+                const response = await fetch(`http://${process.env.REACT_APP_API_URL}/orders/addFullOrder`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

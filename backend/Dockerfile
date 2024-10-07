@@ -4,7 +4,7 @@ FROM openjdk:17-jdk-alpine3.14
 ARG JAR_FILE=*.jar
 COPY p03-0.0.1-SNAPSHOT.jar app.jar
 
-RUN apk update && apk add --no-cache mysql-client bash
+RUN apk update && apk add --no-cache mysql-client bash iputils
 
 COPY wait-for-it.sh /wait-for-it.sh
 RUN chmod +x /wait-for-it.sh

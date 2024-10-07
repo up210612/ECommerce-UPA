@@ -21,7 +21,7 @@ export default function Navbar() {
 
   useEffect(() => {
     if (searchTerm) {
-      fetch(`http://165.232.129.33:8080/products/searchByName/?name=${searchTerm}`)
+      fetch(`http://${process.env.REACT_APP_API_URL}/products/searchByName/?name=${searchTerm}`)
         .then((response) => response.json())
         .then((data) => setSearchResults(data))
         .catch((error) => console.error("Error fetching search results:", error));

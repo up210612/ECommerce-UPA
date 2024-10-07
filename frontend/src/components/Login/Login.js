@@ -45,7 +45,7 @@ export default function Login() {
     };
 
     try {
-      const response = await fetch('http://165.232.129.33:8080/clients/login', {
+      const response = await fetch(`http://${process.env.REACT_APP_API_URL}/clients/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
